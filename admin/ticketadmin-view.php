@@ -284,10 +284,13 @@
                         <div class="col-6">
                             
                         </div>
-                        <div class="col-10">
+                        <div class="col-1" style="position:relative;">
+                            <button id="toPDF" class="btn btn-success" style="position:absolute; bottom:0; left:0;"><i class="fa-regular fa-file-pdf" style="font-size:30px;"></i></button>
+                        </div>
+                        <div class="col-9">
                             
                         </div>
-                        <div class="col-2 mb-5" style="clear:both;" >
+                        <div class="col-2" style="clear:both;" >
                         <button class="btn btn-dark btn-block" type="button" id="searchButton" style="float:right">Buscar</button>
                         <button class="btn btn-dark btn-block" type="button" id="clearButton" style="float:right">Limpiar filtro</button>
                         </div>
@@ -295,7 +298,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-md-12">
-                        <div class="table-responsive">
+                        <div  class="table-responsive">
                             <?php
                                 $mysqli = mysqli_connect(SERVER, USER, PASS, BD);
                                 mysqli_set_charset($mysqli, "utf8");
@@ -341,7 +344,7 @@
 
                                 if (mysqli_num_rows($selticket_admin) + mysqli_num_rows($selticket_cliente) > 0):
                             ?>
-                            <table class="table table-hover table-striped table-bordered mt-5">
+                            <table id="pdf" class="table table-hover table-striped table-bordered table-responsive" style="max-width:100%;width:852px;" >
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
@@ -506,6 +509,10 @@
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" integrity="sha512-2/YdOMV+YNpanLCF5MdQwaoFRVbTmrJ4u4EpqS/USXAQNUDgI5uwYi6J98WVtJKcfe1AbgerygzDFToxAlOGEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         // Obtener referencia al botón de búsqueda
@@ -518,6 +525,14 @@
             document.getElementById("departamento").selectedIndex = 0;
             document.getElementById("fecha_inicio").value = '';
             document.getElementById("fecha_final").value = '';
+        })
+        $('#toPDF').click( function (){
+            const { jsPDF } = window.jspdf;
+            var doc = new jsPDF('l', 'pt');
+            var elem = document.getElementById("pdf");
+            var res = doc.autoTableHtmlToJson(pdf);
+            doc.autoTable(res.columns, res.data);
+            doc.save("tickets.pdf");
         })
         // Escuchar el evento 'click' en el botón de búsqueda
         searchButton.addEventListener('click', () => {
