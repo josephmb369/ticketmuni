@@ -16,7 +16,9 @@
         $hoy = date('d/m/Y   h:i:s  a', TIME());
 
         if(isset($_POST['fecha_ticket']) && isset($_POST['name_ticket']) && isset($_POST['email_ticket'])){
+          try{
 
+          
           /*Este codigo nos servira para generar un numero diferente para cada ticket*/
           $codigo = ""; 
           $longitud = 2; 
@@ -54,9 +56,10 @@
           } elseif ($_SESSION['tipo'] == "tecnico") {
             $id_x = 'id_tecnico';
         }
-
-          $campos_ticket = "fecha, $id_x, departamento, asunto, mensaje, estado_ticket, area, serie";
-          $valores_ticket = "'$fecha_ticket', '$id', '$departamento_ticket', '$asunto_ticket', '$mensaje_ticket', '$estado_ticket', '$area_ticket', '$id_ticket'";
+          $hoy = date_create();
+          $hoy = date_timestamp_get($hoy);
+          $campos_ticket = "$id_x, departamento, asunto, mensaje, estado_ticket, area, serie";
+          $valores_ticket = "'$id', '$departamento_ticket', '$asunto_ticket', '$mensaje_ticket', '$estado_ticket', '$area_ticket', '$id_ticket'";
 
           // Guardar el ticket en la base de datos
           if (MysqlQuery::Guardar("ticket", $campos_ticket, $valores_ticket)) {
@@ -86,6 +89,9 @@
                 </div>
             ';
           }
+        }catch(Exception $e){
+          echo var_dump($e);
+        }
         }
 ?>
         <div class="w-full">
@@ -104,7 +110,7 @@
                             <label class="col-sm-2 control-label">Fecha</label>
                             <div class='col-sm-10'>
                                 <div class="input-group">
-                                    <input class="form-control" type="text" id="fechainput" placeholder="Fecha" name="fecha_ticket"  required=""   value ="<?php echo $hoy ?>" readonly>
+                                    <input class="form-control" type="text" id="fechainput" placeholder="Fecha" name="fecha_ticket"  required   value ="<?php echo $hoy ?>" readonly>
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                 </div>
                             </div>

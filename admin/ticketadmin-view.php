@@ -512,12 +512,12 @@
 <?php
 }
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js" integrity="sha512-2/YdOMV+YNpanLCF5MdQwaoFRVbTmrJ4u4EpqS/USXAQNUDgI5uwYi6J98WVtJKcfe1AbgerygzDFToxAlOGEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         var tickets;
@@ -594,13 +594,35 @@
                             data = data.filter((el) => el.departamento == departament )
                         }
                         data.forEach(row => {
-                            
-                            const tr = `<tr>
+                            let tr = '';
+                            if ( row.id_cliente != null){
+                                tr = `<tr>
                                 <td class="text-center"></td>
                                 <td>${row.fecha}</td>
                                 <td>${row.serie}</td>
                                 <td>${row.estado_ticket}</td>
-                                <td>${row.nombre_admin}</td>
+                                <td>${row.nombres}</td>
+                                <td>${row.email_cliente}</td>
+                                <td>${row.departamento}</td>
+                                <td>${row.nombres_tecnico}</td>
+                                <td>${row.fecha_solucion}</td>
+                                <td>${row.area}</td>
+                                <td>
+                                    <a href="./lib/pdf.php?id=${row.id}" class="btn btn-sm btn-success" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                                    <a href="admin.php?view=ticketedit&id=${row.id}" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <form action="" method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="id_del" value="${row.id}">
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </form>
+                                </td>
+                            </tr>`;
+                            }else if (row.id_admin != null){
+                                tr = `<tr>
+                                <td class="text-center"></td>
+                                <td>${row.fecha}</td>
+                                <td>${row.serie}</td>
+                                <td>${row.estado_ticket}</td>
+                                <td>${row.nombre_completo}</td>
                                 <td>${row.email_admin}</td>
                                 <td>${row.departamento}</td>
                                 <td>${row.nombres_tecnico}</td>
@@ -615,6 +637,8 @@
                                     </form>
                                 </td>
                             </tr>`;
+                            }
+                            
                             $('#ticketTable').append(tr);
                         });
                         console.log(data); 
