@@ -120,7 +120,7 @@
     <!-- Enlace al archivo CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
     <!-- Estilos CSS personalizados -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
 </head>
 
@@ -132,54 +132,15 @@
 
 
 
-<div class="container mt-100" style="margin-left: 120px !important;">
+<div class="container-fluid mt-100" style="margin-left:75px;">
+    <div class="row">
     <div class="col-sm-12 flex-vertical">
         <div class="col-sm-12 text-center">
             <?php include "./inc/reloj.php"; ?>
             <br>              
         </div>  
     </div>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="container mt-100">
-
-            
-
-
-                                    
-
-
+    </div>
             <div class="container mt-250 h-screen">
             <div class="row">
             <div class="col-sm-12 text-center">
@@ -187,35 +148,35 @@
                     </div>
                     <div class="col-md-2-5 border-r bg-blue text-center p-5">
                     <a href="./admin.php?view=ticketadmin&ticket=all" class="text-white text-center">
-                            <i class="fa-regular fa-newspaper" style="font-size:100px"></i>
+                            
                             <h3 class="f-25">Todos los Tickets</h3>
                             <p class="f-25 text-center"><?php echo $num_total_all; ?></p>
                         </a>
                     </div>
                     <div class="col-md-2-5 text-white border-r bg-yellow text-center p-5">
                     <a href="./admin.php?view=ticketadmin&ticket=pending" class="text-white text-center">
-                            <i class="fa-regular fa-newspaper" style="font-size:100px"></i>
+                            
                             <h3 class="f-25">Tickets Pendientes</h3>
                             <p class="f-25 text-center"><?php echo $num_total_pend; ?></p>
                         </a>
                     </div>
                     <div class="col-md-2-5 border-r bg-green text-center p-5">
                     <a href="./admin.php?view=ticketadmin&ticket=process" class="text-white text-center">
-                    <i class="fa-regular fa-newspaper" style="font-size:100px"></i>
+                    
                             <h3 class="f-25">Tickets en Proceso</h3>
                             <p class="f-25 text-center"><?php echo $num_total_proceso; ?></p>
                         </a>
                     </div>
                     <div class="col-md-2-5 text-white border-r bg-gray text-center p-5">
                     <a href="./admin.php?view=ticketadmin&ticket=resolved" class="text-white text-center">
-                            <i class="fa-regular fa-newspaper" style="font-size:100px"></i>
+                        
                             <h3 class="f-25">Tickets Resueltos</h3>
                             <p class="f-25 text-center"><?php echo $num_total_res; ?></p>
                         </a>
                     </div>
                     <div class="col-md-2-5 text-white border-r bg-red text-center p-5">
                     <a href="./admin.php?view=ticketadmin&ticket=canceled" class="text-white">
-                            <i class="fa-regular fa-newspaper" style="font-size:100px"></i>
+                            
                             <h3 class="f-25">Tickets Anulados</h3>
                             <p class="f-25 text-center"><?php echo $num_total_can; ?></p>
                         </a>
@@ -663,3 +624,4 @@
 
 
 </body>
+</html>
