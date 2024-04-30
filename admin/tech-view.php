@@ -60,7 +60,7 @@
                                 $regpagina = 15;
                                 $inicio = ($pagina > 1) ? (($pagina * $regpagina) - $regpagina) : 0;
 
-                                $selusers=mysqli_query($mysqli,"SELECT SQL_CALC_FOUND_ROWS * FROM cliente LIMIT $inicio, $regpagina");
+                                $selusers=mysqli_query($mysqli,"SELECT SQL_CALC_FOUND_ROWS * FROM tecnico LIMIT $inicio, $regpagina");
 
                                 $totalregistros = mysqli_query($mysqli,"SELECT FOUND_ROWS()");
                                 $totalregistros = mysqli_fetch_array($totalregistros, MYSQLI_ASSOC);
@@ -86,13 +86,13 @@
                                     ?>
                                     <tr>
                                         <td class="text-center"><?php echo $ct; ?></td>
-                                        <td class="text-center"><?php echo strtoupper($row['nombres'] . " " . $row['a_paterno'] . " " . $row['a_materno']); ?></td>
-                                        <td class="text-center"><?php echo $row['nombre_usuario']; ?></td>
-                                        <td class="text-center"><?php echo $row['email_cliente']; ?></td>
+                                        <td class="text-center"><?php echo strtoupper($row['nombres_tecnico'] . " " . $row['a_paterno_tecnico'] . " " . $row['a_materno_tecnico']); ?></td>
+                                        <td class="text-center"><?php echo $row['nombre_tecnico']; ?></td>
+                                        <td class="text-center"><?php echo $row['email_tecnico']; ?></td>
                                         <td class="text-center">
-                                        <!--<a href="admin.php?view=configusuario&id=<?php echo $row['id_cliente']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>-->
+                                        <a href="admin.php?view=configtecnico&id=<?php echo $row['id_tecnico']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                             <form action="" method="POST" style="display: inline-block;">
-                                                <input type="hidden" name="id_del" value="<?php echo $row['id_cliente']; ?>">
+                                                <input type="hidden" name="id_del" value="<?php echo $row['id_tecnico']; ?>">
                                                 <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             </form>
                                         </td>

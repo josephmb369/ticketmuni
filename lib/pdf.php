@@ -155,24 +155,50 @@ $pdf->Cell (35,7,'No. DE SERIE',1,0,'C');
 $pdf->Cell (57.95,7,utf8_decode($reg['serie']),1,1,'L');
 $pdf->SetFillColor(255, 255, 255, 0);
 $pdf->SetDrawColor(0, 0, 0, 0);
-$pdf->Cell (35,7,'FALLA PRESENTADA',1,0,'C');
-$pdf->Cell (0,7,utf8_decode($reg['mensaje']),1,1,'L');
-$pdf->Cell(35, 7, utf8_decode('DIAGNÓSTICO'), 1, 0, 'C');
-$pdf->Cell(0, 7, utf8_decode($reg['diagnostico']), 1, 1, 'L');
-$pdf->Cell(35, 7, utf8_decode('SOLUCIÓN'), 1, 0, 'C');
-$pdf->Cell(0, 7, utf8_decode($reg['solucion']), 1, 1, 'L');
-$pdf->SetFillColor(0,255,255);
-$pdf->SetDrawColor(0,0,0);
-$pdf->Cell(185.9, 7, 'OBSERVACIONES', 1, 1, 'C', true);
-$pdf->SetFont("Arial","",9);
-$pdf->SetDrawColor(255, 255, 255, 0); // Establecer el color de los bordes como transparente
-$pdf->SetFillColor(255, 255, 255, 0); // Establecer el color del fondo como transparente
-$pdf->Cell (185.9,7,utf8_decode($reg['observaciones']),1,1,'C');
-$pdf->SetFillColor(0,255,255);
-$pdf->SetDrawColor(0,0,0);
-$pdf->Rect(15,  188,  185.9, 14);
+//FALLA PRESENTADA
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->SetFont("Arial","b",8);
+$pdf->MultiCell (35,14,utf8_decode('FALLA PRESENTADA'),1,'C');
+$x = $x + 35;
+$pdf->SetXY($x, $y);
+$pdf->SetFont("Arial","",8);
+$pdf->MultiCell (151,14,utf8_decode($reg['mensaje']),1,'L');
+
+//DIAGNOSTICO
+$pdf->SetFont("Arial","b",8);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->MultiCell (35,14,utf8_decode('DIAGNÓSTICO'),1,'C');
+$x = $x + 35;
+$pdf->SetXY($x, $y);
+$pdf->SetFont("Arial","",8);
+$pdf->MultiCell (151,14,utf8_decode($reg['diagnostico']),1,'L');
+
+//SOLUCION
+
+$pdf->SetFont("Arial","b",8);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->MultiCell (35,14,utf8_decode('SOLUCIÓN'),1,'C');
+$x = $x + 35;
+$pdf->SetXY($x, $y);
+$pdf->SetFont("Arial","",8);
+$pdf->MultiCell (151,14,utf8_decode($reg['solucion']),1,'L');
+
+// OBSERVACIONES
+$pdf->SetFont("Arial","b",8);
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->MultiCell (35,14,utf8_decode('OBSERVACIONES'),1,'C');
+$x = $x + 35;
+$pdf->SetXY($x, $y);
+$pdf->SetFont("Arial","",8);
+$pdf->MultiCell (151,14,utf8_decode($reg['observaciones']),1,'L');
+
 $pdf->Cell (92.95,40,utf8_decode(''),1,0,'C');
 $pdf->Cell (92.95,40,utf8_decode(''),1,1,'C');
+
 
 // Obtener las coordenadas actuales para la celda principal
 $xCeldaPrincipal = $pdf->GetX();

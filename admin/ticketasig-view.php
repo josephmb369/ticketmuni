@@ -17,7 +17,7 @@
     $usuario = $_SESSION['nombre'];
     $nombre = $_SESSION['nombre_completo'];
     ?>
-        <div class="container-fluid mt-100" style="margin-left:150px;">
+        <div class="container-fluid mt-100" style="margin-left:100px;">
           <div class="row">
           <div class="col-sm-12 text-center">
             <?php include "./inc/reloj.php"; ?>
@@ -50,49 +50,49 @@
                 $num_total_can=mysqli_num_rows($num_ticket_can);
             ?>
 
-            <div class="container h-screen" style="margin-left: 120px;" >
-            <div class="row mt-250">
-                    <div class="col-md-2-5 border-r bg-blue text-center">
+            <div class="container-fluid h-screen mt-250" style="padding: 0 !important; margin-left:150px !important; max-width:85% !important; width:100%; margin:auto;">
+            <div class="row">
+                    <div class="col-md-2-5 border-r bg-blue text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=all" class="text-white">
-                            <h3 class="f-25">Todos los Tickets</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_all; ?></p>
+                            <h3 class="f-20 text-center">Todos los Tickets</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_all; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-yellow text-center">
+                    <div class="col-md-2-5 text-white border-r bg-yellow text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=pending" class="text-white ">
-                            <h3 class="f-25">Tickets Pendientes</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_pend; ?></p>
+                            <h3 class="f-20 text-center">Tickets Pendientes</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_pend; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 border-r bg-green text-center">
+                    <div class="col-md-2-5 border-r bg-green text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=process" class="text-white ">
-                            <h3 class="f-25">Tickets en Proceso</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_proceso; ?></p>
+                            <h3 class="f-20 text-center">Tickets en Proceso</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_proceso; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-gray text-center">
+                    <div class="col-md-2-5 text-white border-r bg-gray text-center pt-4 pb-4" >
                         <a href="./admin.php?view=ticketasig&ticket=resolved" class="text-white">
-                            <h3 class="f-25">Tickets Resueltos</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_res; ?></p>
+                            <h3 class="f-20 text-center">Tickets Resueltos</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_res; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-red text-center">
+                    <div class="col-md-2-5 text-white border-r bg-red text-center pt-4 pb-4">
                     <a href="./admin.php?view=ticketasig&ticket=canceled" class="text-white">
-                            <h3 class="f-25">Tickets Anulados</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_can; ?></p>
+                            <h3 class="f-20 text-center">Tickets Anulados</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_can; ?></p>
                         </a>
                     </div>
                 </div>
                 <br>
-                <div class="container mt-5 mb-5 p-5" style="">
+                <div class="container-fluid mt-5 mb-5">
                     <!-- Campos de entrada para la búsqueda y filtro por fecha -->
                     <div class="row">
                         <div class="col-12 mt-2 mb-2">
-                        <input type="text" class="form-control" name="ticket" id="ticket">
+                        <input type="text" class="form-control" name="ticket" id="ticket" placeholder="Buscar por palabra clave...">
                         </div>
                         <div class="col-4 mt-2 mb-2">
                         <select name="responsable" id="responsable" class="form-control">
-                            <option value="">Escoja una opcion</option>
+                            <option value="">Seleccione un técnico...</option>
                             <?php 
                                 $mysqli = mysqli_connect(SERVER, USER, PASS, BD);
                                 mysqli_set_charset($mysqli, "utf8");
@@ -108,7 +108,7 @@
                         </div>
                         <div class="col-4 mt-2 mb-2">
                         <select name="estado" id="estado" class="form-control">
-                        <option value="">Escoja una opcion</option>
+                        <option value="">Seleccione el estado de ticket...</option>
                             <option value="Pendiente">Pendiente</option>
                             <option value="En proceso">En proceso</option>
                             <option value="En proceso">Anulado</option>
@@ -118,7 +118,7 @@
                         <div class="col-4 mt-2 mb-2">
                         <!-- FALTA EL AREA -->  
                         <select class="form-control" name="departamento" id="departamento">
-                                <option value="">Escoja una opcion</option>
+                                <option value="">Escoja la área de falla...</option>
                                   <option value="Mantenimiento preventivo">Mantenimiento preventivo</option>
                                   <option value="Mantenimiento correctivo">Mantenimiento correctivo</option>
                                   <option value="Instalacion de accesorios">Instalacion de accesorios</option>
@@ -311,7 +311,7 @@
     ?>
     
 
-        <div class="container mt-100" style="margin-left:120px;">
+        <div class="container mt-100" style="margin-left:75px;">
           <div class="row">
           <div class="col-sm-12 text-center">
             <?php include "./inc/reloj.php"; ?>
@@ -344,49 +344,49 @@
                 $num_total_can=mysqli_num_rows($num_ticket_can);
             ?>
 
-            <div class="container h-screen" style="margin-left:120px;">
+            <div class="container-fluid h-screen" style="padding: 0 !important; margin-left:150px !important; max-width:85% !important; width:100%; margin:auto;">
             <div class="row mt-250">
-                    <div class="col-md-2-5 border-r bg-blue text-center">
+                    <div class="col-md-2-5 border-r bg-blue text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=all" class="text-white">
-                            <h3 class="f-25">Todos los Tickets</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_all; ?></p>
+                            <h3 class="f-20 text-center">Todos los Tickets</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_all; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-yellow text-center">
+                    <div class="col-md-2-5 text-white border-r bg-yellow text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=pending" class="text-white ">
-                            <h3 class="f-25">Tickets Pendientes</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_pend; ?></p>
+                            <h3 class="f-20 text-center">Tickets Pendientes</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_pend; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 border-r bg-green text-center">
+                    <div class="col-md-2-5 border-r bg-green text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=process" class="text-white ">
-                            <h3 class="f-25">Tickets en Proceso</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_proceso; ?></p>
+                            <h3 class="f-20 text-center">Tickets en Proceso</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_proceso; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-gray text-center">
+                    <div class="col-md-2-5 text-white border-r bg-gray text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=resolved" class="text-white">
-                            <h3 class="f-25">Tickets Resueltos</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_res; ?></p>
+                            <h3 class="f-20 text-center">Tickets Resueltos</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_res; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-red text-center">
+                    <div class="col-md-2-5 text-white border-r bg-red text-center pt-4 pb-4">
                     <a href="./admin.php?view=ticketasig&ticket=canceled" class="text-white">
-                            <h3 class="f-25">Tickets Anulados</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_can; ?></p>
+                            <h3 class="f-20 text-center">Tickets Anulados</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_can; ?></p>
                         </a>
                     </div>
                 </div>
                 <br>
-                <div class="container mt-5 mb-5"  style="margin-left:120px;">
+                <div class="container-fluid mt-5 mb-5">
                     <!-- Campos de entrada para la búsqueda y filtro por fecha -->
                     <div class="row">
                         <div class="col-12 mt-2 mb-2">
-                        <input type="text" class="form-control" name="ticket" id="ticket">
+                        <input type="text" class="form-control" name="ticket" id="ticket" placeholder="Buscar por palabra clave...">
                         </div>
                         <div class="col-4 mt-2 mb-2">
                         <select name="responsable" id="responsable" class="form-control">
-                            <option value="">Escoja una opcion</option>
+                            <option value="">Seleccione un técnico...</option>
                             <?php 
                                 $mysqli = mysqli_connect(SERVER, USER, PASS, BD);
                                 mysqli_set_charset($mysqli, "utf8");
@@ -402,7 +402,7 @@
                         </div>
                         <div class="col-4 mt-2 mb-2">
                         <select name="estado" id="estado" class="form-control">
-                        <option value="">Escoja una opcion</option>
+                        <option value="">Seleccione el estado de ticket...</option>
                             <option value="Pendiente">Pendiente</option>
                             <option value="En proceso">En proceso</option>
                             <option value="En proceso">Anulado</option>
@@ -412,7 +412,7 @@
                         <div class="col-4 mt-2 mb-2">
                         <!-- FALTA EL AREA -->  
                         <select class="form-control" name="departamento" id="departamento">
-                                <option value="">Escoja una opcion</option>
+                                <option value="">Escoja la área de falla...</option>
                                   <option value="Mantenimiento preventivo">Mantenimiento preventivo</option>
                                   <option value="Mantenimiento correctivo">Mantenimiento correctivo</option>
                                   <option value="Instalacion de accesorios">Instalacion de accesorios</option>

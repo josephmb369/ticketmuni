@@ -92,14 +92,10 @@
           $new_pass_update=md5(MysqlQuery::RequestPost('new_pass_update'));
           $email_update=MysqlQuery::RequestPost('email_update');
           
-           $sql=Mysql::consulta("SELECT * FROM cliente WHERE  nombre_completo='$old_user_update'");
+           $sql=Mysql::consulta("SELECT * FROM cliente WHERE id_cliente=".$_GET['id']);
            
           if(mysqli_num_rows($sql)>=1){
-            MysqlQuery::Actualizar("cliente", "clave='$new_pass_update'", "clave='$old_pass_update'");
-
-            $_SESSION['nombre']=$new_user_update;
-            $_SESSION['clave']=$new_pass_update;
-
+            if(Mysql::consulta("UPDATE cliente SET nombres='$nombre_complete_update', nombre_usuario='$new_user_update', clave='$new_pass_update', email_cliente='$email_update'  WHERE id_cliente=".$_GET['id'])){
             echo '
               <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -109,6 +105,7 @@
                   </p>
               </div>
             ';
+            }
           }else{
             echo '
               <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 

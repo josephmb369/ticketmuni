@@ -24,26 +24,26 @@ class PDF extends FPDF
 
         // Agregar título centrado
         $this->SetFont('Helvetica', 'B', 14);
-        $this->Cell(0, 0, 'MUNICIPALIDAD DISTRITAL MAGDALENA', 0, 1, 'C');
+        $this->Cell(0, 7, 'MUNICIPALIDAD DISTRITAL MAGDALENA', 0, 1, 'C');
 
         // Cambiar a fuente normal antes de imprimir el subtítulo
         $this->SetFont('Helvetica', '', 10);
 
         // Agregar subtítulo
-        $this->Cell(0, 9, utf8_decode('OFICINA DE TECNOLOGIA DE LA INFORMACIÓN'), 0, 1, 'C');
+        $this->Cell(0, 7, utf8_decode('OFICINA DE TECNOLOGIA DE LA INFORMACIÓN'), 0, 1, 'C');
 
         // Cambiar a negrita para el nuevo título
         $this->SetFont('Helvetica', 'B', 13);
 
         // Agrega Título Ficha
-        $this->Cell(0, 10, utf8_decode('FICHA DE SERVICIO DE SOPORTE TÉCNICO'), 0, 1, 'C');
+        $this->Cell(0, 7, utf8_decode('FICHA DE SERVICIO DE SOPORTE TÉCNICO'), 0, 1, 'C');
 
         // Restaurar a fuente normal para la tabla
         $this->SetFont('Helvetica', '', 10);
 
         // Agregar fecha actual abajo a la derecha
-        $this->Cell(120, 10, 'Fecha:', 0, 0, 'R');
-        $this->Cell(20, 10, date('d/m/Y'), 0, 0, 'R');
+        $this->Cell(120, 7, 'Fecha:', 0, 0, 'R');
+        $this->Cell(20, 7, date('d/m/Y'), 0, 1, 'R');
 
         // Agregar texto "Reporte de Servicio No:" al lado derecho
         $this->Cell(-10); // Ajustar para alinearlo al margen derecho  
@@ -125,22 +125,47 @@ function addPagePdf($pdf, $reg){
     $pdf->Cell (57.95,7,utf8_decode($reg['serie']),1,1,'L');
     $pdf->SetFillColor(255, 255, 255, 0);
     $pdf->SetDrawColor(0, 0, 0, 0);
-    $pdf->Cell (35,7,'FALLA PRESENTADA',1,0,'C');
-    $pdf->Cell (0,7,utf8_decode($reg['mensaje']),1,1,'L');
-    $pdf->Cell(35, 7, utf8_decode('DIAGNÓSTICO'), 1, 0, 'C');
-    $pdf->Cell(0, 7, utf8_decode($reg['diagnostico']), 1, 1, 'L');
-    $pdf->Cell(35, 7, utf8_decode('SOLUCIÓN'), 1, 0, 'C');
-    $pdf->Cell(0, 7, utf8_decode($reg['solucion']), 1, 1, 'L');
-    $pdf->SetFillColor(0,255,255);
-    $pdf->SetDrawColor(0,0,0);
-    $pdf->Cell(185.9, 7, 'OBSERVACIONES', 1, 1, 'C', true);
-    $pdf->SetFont("Arial","",9);
-    $pdf->SetDrawColor(255, 255, 255, 0); // Establecer el color de los bordes como transparente
-    $pdf->SetFillColor(255, 255, 255, 0); // Establecer el color del fondo como transparente
-    $pdf->Cell (185.9,7,utf8_decode($reg['observaciones']),1,1,'C');
-    $pdf->SetFillColor(0,255,255);
-    $pdf->SetDrawColor(0,0,0);
-    $pdf->Rect(15,  188,  185.9, 14);
+    $pdf->SetFont("Arial","b",8);
+    //FALLA PRESENTADA
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell (35,14,utf8_decode('FALLA PRESENTADA'),1,'C');
+    $x = $x + 35;
+    $pdf->SetXY($x, $y);
+    $pdf->SetFont("Arial","",8);
+    $pdf->MultiCell (151,14,utf8_decode($reg['mensaje']),1,'L');
+
+    //DIAGNOSTICO
+    $pdf->SetFont("Arial","b",8);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell (35,14,utf8_decode('DIAGNÓSTICO'),1,'C');
+    $x = $x + 35;
+    $pdf->SetXY($x, $y);
+    $pdf->SetFont("Arial","",8);
+    $pdf->MultiCell (151,14,utf8_decode($reg['diagnostico']),1,'L');
+    
+    //SOLUCION
+
+    $pdf->SetFont("Arial","b",8);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell (35,14,utf8_decode('SOLUCIÓN'),1,'C');
+    $x = $x + 35;
+    $pdf->SetXY($x, $y);
+    $pdf->SetFont("Arial","",8);
+    $pdf->MultiCell (151,14,utf8_decode($reg['solucion']),1,'L');
+
+    // OBSERVACIONES
+    $pdf->SetFont("Arial","b",8);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell (35,14,utf8_decode('OBSERVACIONES'),1,'C');
+    $x = $x + 35;
+    $pdf->SetXY($x, $y);
+    $pdf->SetFont("Arial","",8);
+    $pdf->MultiCell (151,14,utf8_decode($reg['observaciones']),1,'L');
+    
     $pdf->Cell (92.95,40,utf8_decode(''),1,0,'C');
     $pdf->Cell (92.95,40,utf8_decode(''),1,1,'C');
 

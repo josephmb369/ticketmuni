@@ -122,6 +122,11 @@
     <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <style>
+        body{
+            overflow-x:auto;
+        }
+    </style>
 </head>
 
 
@@ -132,7 +137,7 @@
 
 
 
-<div class="container-fluid mt-100" style="margin-left:75px;">
+<div class="container-fluid mt-100" style="margin-left:75px">
     <div class="row">
     <div class="col-sm-12 flex-vertical">
         <div class="col-sm-12 text-center">
@@ -141,57 +146,49 @@
         </div>  
     </div>
     </div>
-            <div class="container mt-250 h-screen">
+            <div class="container-fluid mt-250 h-screen" style="max-width:90%; width:100%;">
             <div class="row">
-            <div class="col-sm-12 text-center">
-
-                    </div>
-                    <div class="col-md-2-5 border-r bg-blue text-center p-5">
-                    <a href="./admin.php?view=ticketadmin&ticket=all" class="text-white text-center">
-                            
-                            <h3 class="f-25">Todos los Tickets</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_all; ?></p>
+                    <div class="col-md-2-5 border-r bg-blue text-center pt-4 pb-4">
+                        <a href="./admin.php?view=ticketasig&ticket=all" class="text-white">
+                            <h3 class="f-20 text-center">Todos los Tickets</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_all; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-yellow text-center p-5">
-                    <a href="./admin.php?view=ticketadmin&ticket=pending" class="text-white text-center">
-                            
-                            <h3 class="f-25">Tickets Pendientes</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_pend; ?></p>
+                    <div class="col-md-2-5 text-white border-r bg-yellow text-center pt-4 pb-4">
+                        <a href="./admin.php?view=ticketasig&ticket=pending" class="text-white ">
+                            <h3 class="f-20 text-center">Tickets Pendientes</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_pend; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 border-r bg-green text-center p-5">
-                    <a href="./admin.php?view=ticketadmin&ticket=process" class="text-white text-center">
-                    
-                            <h3 class="f-25">Tickets en Proceso</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_proceso; ?></p>
+                    <div class="col-md-2-5 border-r bg-green text-center pt-4 pb-4">
+                        <a href="./admin.php?view=ticketasig&ticket=process" class="text-white ">
+                            <h3 class="f-20 text-center">Tickets en Proceso</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_proceso; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-gray text-center p-5">
-                    <a href="./admin.php?view=ticketadmin&ticket=resolved" class="text-white text-center">
-                        
-                            <h3 class="f-25">Tickets Resueltos</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_res; ?></p>
+                    <div class="col-md-2-5 text-white border-r bg-gray text-center pt-4 pb-4">
+                        <a href="./admin.php?view=ticketasig&ticket=resolved" class="text-white">
+                            <h3 class="f-20 text-center">Tickets Resueltos</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_res; ?></p>
                         </a>
                     </div>
-                    <div class="col-md-2-5 text-white border-r bg-red text-center p-5">
-                    <a href="./admin.php?view=ticketadmin&ticket=canceled" class="text-white">
-                            
-                            <h3 class="f-25">Tickets Anulados</h3>
-                            <p class="f-25 text-center"><?php echo $num_total_can; ?></p>
+                    <div class="col-md-2-5 text-white border-r bg-red text-center pt-4 pb-4">
+                    <a href="./admin.php?view=ticketasig&ticket=canceled" class="text-white">
+                            <h3 class="f-20 text-center">Tickets Anulados</h3>
+                            <p class="f-20 text-center"><?php echo $num_total_can; ?></p>
                         </a>
                     </div>
                 </div>
                 <br>
-                <div class="container mt-5 mb-5">
+                <div class="container-fluid mt-5 mb-5">
                     <!-- Campos de entrada para la búsqueda y filtro por fecha -->
                     <div class="row">
                         <div class="col-12 mt-2 mb-2">
-                        <input type="text" class="form-control" name="ticket" id="ticket">
+                        <input type="text" class="form-control" name="ticket" id="ticket" placeholder="Buscar por palabra clave...">
                         </div>
                         <div class="col-4 mt-2 mb-2">
                         <select name="responsable" id="responsable" class="form-control">
-                            <option value="">Escoja una opcion</option>
+                            <option value="">Seleccione un técnico...</option>
                             <?php 
                                 $mysqli = mysqli_connect(SERVER, USER, PASS, BD);
                                 mysqli_set_charset($mysqli, "utf8");
@@ -207,7 +204,7 @@
                         </div>
                         <div class="col-4 mt-2 mb-2">
                         <select name="estado" id="estado" class="form-control">
-                        <option value="">Escoja una opcion</option>
+                        <option value="">Seleccione el estado de ticket...</option>
                             <option value="Pendiente">Pendiente</option>
                             <option value="En proceso">En proceso</option>
                             <option value="En proceso">Anulado</option>
@@ -217,7 +214,7 @@
                         <div class="col-4 mt-2 mb-2">
                         <!-- FALTA EL AREA -->  
                         <select class="form-control" name="departamento" id="departamento">
-                                <option value="">Escoja una opcion</option>
+                                <option value="">Escoja la área de falla...</option>
                                   <option value="Mantenimiento preventivo">Mantenimiento preventivo</option>
                                   <option value="Mantenimiento correctivo">Mantenimiento correctivo</option>
                                   <option value="Instalacion de accesorios">Instalacion de accesorios</option>
@@ -263,7 +260,7 @@
                     </div>
                 </div>
                 <div class="row mt-5">
-                    <div class="col-md-12">
+                    <div class="col-12">
                         <div  class="table-responsive">
                             <?php
                                 $mysqli = mysqli_connect(SERVER, USER, PASS, BD);
@@ -473,7 +470,10 @@
 <?php
 }
 ?>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -600,7 +600,7 @@
                             $('#ticketTable').append(tr);
                         });
                         console.log(data); 
-                        tickets = data;
+                        tickets = JSON.stringify(data);
                         $('#toPDF').removeClass('d-none').addClass('d-block');
                         console.log(tickets);
                         $('#all_tickets').append(tickets);
