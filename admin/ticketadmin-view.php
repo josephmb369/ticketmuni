@@ -307,7 +307,7 @@
 
                                 if (mysqli_num_rows($selticket_admin) + mysqli_num_rows($selticket_cliente) > 0):
                             ?>
-                            <table id="pdf" class="table table-hover table-striped table-bordered table-responsive" style="max-width:100%;width:852px;" >
+                            <table id="pdf" class="table table-hover table-striped table-bordered table-responsive">
                                 <thead>
                                     <tr>
                                         <th class="text-center">#</th>
@@ -318,8 +318,8 @@
                                         <th class="text-center">Email</th>
                                         <th class="text-center">Tipo de falla</th>
                                         <th class="text-center">Tecnico</th>
-                                        <th class="text-center">Fecha de actualizacion de estado</th>
-                                        <th class="text-center">Area</th>
+                                        
+                                        
                                         <th class="text-center">Opciones</th>
                                     </tr>
                                 </thead>
@@ -342,8 +342,8 @@
                                         <td class="text-center"><?php echo $row['email_admin']; ?></td>
                                         <td class="text-center"><?php echo $row['departamento']; ?></td>
                                         <td class="text-center"><?php echo strtoupper($row['nombres_tecnico'] . " " . $row['a_paterno_tecnico'] . " " . $row['a_materno_tecnico']); ?></td>
-                                        <td class="text-center"><?php echo $row['fecha_solucion']; ?></td>
-                                        <td class="text-center"><?php echo "Informática"; ?></td>
+                                        
+                                        
                                         <td class="text-center">
                                             <a href="./lib/pdf.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-success" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
 
@@ -371,8 +371,8 @@
                                         <td class="text-center"><?php echo $row['email_cliente']; ?></td>
                                         <td class="text-center"><?php echo $row['departamento']; ?></td>
                                         <td class="text-center"><?php echo strtoupper($row['nombres_tecnico'] . " " . $row['a_paterno_tecnico'] . " " . $row['a_materno_tecnico']); ?></td>
-                                        <td class="text-center"><?php echo $row['fecha_solucion']; ?></td>
-                                        <td class="text-center"><?php echo $row['area']; ?></td>
+                                        
+                                        
                                         <td class="text-center">
                                             <a href="./lib/pdf.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-success" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
 

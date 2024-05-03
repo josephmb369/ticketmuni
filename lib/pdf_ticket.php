@@ -93,12 +93,16 @@ function addPagePdf($pdf, $reg){
     $pdf->Cell (0,5.5,utf8_decode($reg['area']),1,1,'L');
     $pdf->Cell(35, 5.5, 'Departamento:      ', 1, 0, 'L');
     $pdf->Cell (0,5.5,utf8_decode($reg['departamento']),1,1,'L');
-
-    if ( $reg['id_cliente']== !null ){
+    if ( $reg['id_cliente']){
         $pdf->Cell(35, 5.5, 'Nombre del usuario:      ', 1, 0, 'L');
         $pdf->Cell (0,5.5,utf8_decode($reg['nombre_usuario']),1,1,'L');
         $pdf->Cell(35, 5.5, 'Email:      ', 1, 0, 'L');
         $pdf->Cell (0,5.5,utf8_decode($reg['email_cliente']),1,1,'L');
+    }else if ( $reg['id_admin']){
+        $pdf->Cell(35, 5.5, 'Nombre del usuario:      ', 1, 0, 'L');
+        $pdf->Cell (0,5.5,utf8_decode($reg['nombre_admin']),1,1,'L');
+        $pdf->Cell(35, 5.5, 'Email:      ', 1, 0, 'L');
+        $pdf->Cell (0,5.5,utf8_decode($reg['email_admin']),1,1,'L');
     }
     $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0,0,0);
@@ -155,20 +159,20 @@ function addPagePdf($pdf, $reg){
     $pdf->SetXY($x, $y);
     $pdf->SetFont("Arial","",8);
     $pdf->MultiCell (151,14,utf8_decode($reg['solucion']),1,'L');
-
-    // OBSERVACIONES
-    $pdf->SetFont("Arial","b",8);
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->MultiCell (35,14,utf8_decode('OBSERVACIONES'),1,'C');
-    $x = $x + 35;
-    $pdf->SetXY($x, $y);
-    $pdf->SetFont("Arial","",8);
-    $pdf->MultiCell (151,14,utf8_decode($reg['observaciones']),1,'L');
+    
+    $pdf->SetFillColor(0,255,255);
+    $pdf->SetDrawColor(0,0,0);
+    $pdf->Cell (185.9,7,utf8_decode(''),0,1,'C');
+    $pdf->Cell(185.9, 7, 'OBSERVACIONES', 1, 1, 'C', true);
+    $pdf->SetFont("Arial","",9);
+    $pdf->SetDrawColor(0, 0, 0, 1); // Establecer el color de los bordes como transparente
+    $pdf->SetFillColor(255, 255, 255, 0); // Establecer el color del fondo como transparente
+    $pdf->MultiCell(185.9,14,utf8_decode($reg['observaciones']),1,1,'C');
+    $pdf->SetFillColor(0,255,255);
+    $pdf->SetDrawColor(0,0,0);
     
     $pdf->Cell (92.95,40,utf8_decode(''),1,0,'C');
     $pdf->Cell (92.95,40,utf8_decode(''),1,1,'C');
-
     // Obtener las coordenadas actuales para la celda principal
     $xCeldaPrincipal = $pdf->GetX();
     $yCeldaPrincipal = $pdf->GetY();

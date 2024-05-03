@@ -140,11 +140,11 @@ if(isset($_POST['nom_admin_reg']) && isset($_POST['admin_reg']) && isset($_POST[
                          <form role="form" action="" method="POST">
                          <div class="form-group">
                            <label><i class="fa fa-male"></i>&nbsp;Nombre completo</label>
-                           <input type="text" class="form-control" value="<?php echo $reg1['nombres_tecnico']; ?>" name="nom_admin_up" placeholder="Nombre completo" required="" pattern="[a-zA-Z ]{1,40}" title="Nombre Apellido" maxlength="40">
+                           <input type="text" class="form-control" value="<?php echo $reg1['nombres_tecnico']; ?>" name="nom_admin_up" placeholder="Nombre completo" title="Nombre Apellido" maxlength="40">
                          </div>
                          <div class="form-group">
                            <label><i class="fa fa-user"></i>&nbsp;Nombre de administrador anterior</label>
-                           <input type="text" class="form-control" value="<?php echo $reg1['nombre_tecnico']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" required="" pattern="[a-zA-Z0-9]{1,15}" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
+                           <input type="text" class="form-control" value="<?php echo $reg1['nombre_tecnico']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
                          </div>
                          <div class="form-group has-success has-feedback">
                            <label class="control-label"><i class="fa fa-user"></i>&nbsp;Nuevo nombre de administrador</label>
