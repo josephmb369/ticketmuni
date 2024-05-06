@@ -175,7 +175,7 @@
                     <div class="form-group">
                       <label class="text-primary"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Email</label>
                       <input type="email" class="form-control"  placeholder="Escriba su email" autcomplete="off" value="<?php echo $regu['email_cliente'] ?>" name="email_update">
-                    </div>-->
+                    </div>
                     <button type="submit" class="btn btn-info">Actualizar datos</button>
                   </form>
                 </div>

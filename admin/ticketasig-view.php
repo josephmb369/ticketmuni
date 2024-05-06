@@ -50,7 +50,7 @@
                 $num_total_can=mysqli_num_rows($num_ticket_can);
             ?>
 
-            <div class="container-fluid h-screen mt-250" style="padding: 0 !important; margin-left:150px !important; max-width:89% !important; width:100%; margin:auto;">
+            <div class="container-fluid h-screen mt-250" style="padding: 0 !important; margin-left:200px !important; max-width:80% !important; width:100%; margin:auto;">
             <div class="row">
                     <div class="col-md-2-5 border-r bg-blue text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=all" class="text-white">
@@ -344,7 +344,7 @@
                 $num_total_can=mysqli_num_rows($num_ticket_can);
             ?>
 
-            <div class="container-fluid h-screen" style="padding: 0 !important; margin-left:150px !important; max-width:85% !important; width:100%; margin:auto;">
+            <div class="container-fluid h-screen" style="padding: 0 !important; margin-left:75px !important; max-width:30% !important; width:100%; margin:auto;">
             <div class="row mt-250">
                     <div class="col-md-2-5 border-r bg-blue text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=all" class="text-white">

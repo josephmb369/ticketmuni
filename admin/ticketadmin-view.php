@@ -146,7 +146,7 @@
         </div>  
     </div>
     </div>
-            <div class="container-fluid mt-250 h-screen" style="max-width:90%; width:100%;">
+            <div class="container-fluid mt-250 h-screen" style="max-width:80%; width:100%;margin:auto;">
             <div class="row">
                     <div class="col-md-2-5 border-r bg-blue text-center pt-4 pb-4">
                         <a href="./admin.php?view=ticketasig&ticket=all" class="text-white">

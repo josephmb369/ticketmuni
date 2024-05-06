@@ -51,6 +51,16 @@
                 <h1>Tabla de Técnicos Registrados</h1>            </div>
           </div>
                     <div class="col-md-12">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                    <div class="container-fluid mt-5 mb-5">
+                        <!-- Campos de entrada para la búsqueda y filtro por fecha -->
+                                        <input type="text" class="form-control" name="clients" id="clients" placeholder="Buscar por palabra clave...">
+                                    </div>
+                                </div>
+                            </div>
+                    <div class="col-md-12">
                         <div class="table-responsive">
                             <?php 
                                 $mysqli = mysqli_connect(SERVER, USER, PASS, BD);
@@ -79,7 +89,7 @@
                                         
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="techsTable">
                                     <?php
                                         $ct=$inicio+1;
                                         while ($row=mysqli_fetch_array($selusers, MYSQLI_ASSOC)): 
@@ -175,3 +185,45 @@
 <?php
 }
 ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var clients;
+        $('#clients').on("change", function(){
+            let searchTerm = $('#clients').val().trim();
+            $.ajax({
+                type: 'POST',
+                url: 'admin/filter_clients.php',
+                data: { 
+                    searchTerm: searchTerm
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log( data );
+                    if ( data.length > 0 ){
+                        $('#techsTable').empty();
+                        data.forEach((row) => {
+                            tr = `<tr>
+                                <td class="text-center"></td>
+                                <td>${row.nombres} ${row.a_paterno} ${row.a_materno}</td>
+                                <td>${row.nombre_usuario}</td>
+                                <td>${row.email_cliente}</td>
+                                
+                                <td>
+                                    <a href="admin.php?view=configtecnico&id=${row.id}" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <form action="" method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="id_del" value="${row.id}">
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    </form>
+                                </td>
+                            </tr>`;
+                            $('#techsTable').append(tr);
+                        })
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener datos:', error);
+                } 
+            });
+        })
+    });
+</script>
