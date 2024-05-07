@@ -91,11 +91,12 @@
           $old_pass_update=md5(MysqlQuery::RequestPost('old_pass_update'));
           $new_pass_update=md5(MysqlQuery::RequestPost('new_pass_update'));
           $email_update=MysqlQuery::RequestPost('email_update');
-          
+          $a_paterno=MysqlQuery::RequestPost('a_paterno');
+          $a_materno=MysqlQuery::RequestPost('a_materno');
            $sql=Mysql::consulta("SELECT * FROM cliente WHERE id_cliente=".$_GET['id']);
            
           if(mysqli_num_rows($sql)>=1){
-            if(Mysql::consulta("UPDATE cliente SET nombres='$nombre_complete_update', nombre_usuario='$new_user_update', clave='$new_pass_update', email_cliente='$email_update'  WHERE id_cliente=".$_GET['id'])){
+            if(Mysql::consulta("UPDATE cliente SET nombres='$nombre_complete_update', a_paterno='$a_paterno', a_materno='$a_materno', nombre_usuario='$new_user_update', clave='$new_pass_update', email_cliente='$email_update'  WHERE id_cliente=".$_GET['id'])){
             echo '
               <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -153,7 +154,15 @@
                   <form action="" method="post" role="form">
                     <div class="form-group">
                       <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Nombre completo</label>
-                      <input type="text" class="form-control" value="<?php echo $regu['nombres'] . " " . $regu['a_paterno'] . " " . $regu['a_materno']; ?>" autocomplete="off" placeholder="Nombre completo" name="name_complete_update"  title="Nombre Apellido" maxlength="40">
+                      <input type="text" class="form-control" value="<?php echo $regu['nombres'];?>" autocomplete="off" placeholder="Nombres " name="name_complete_update"  title="Nombre Apellido" maxlength="40">
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Nombre completo</label>
+                      <input type="text" class="form-control" value="<?php echo $regu['a_paterno'];?>" autocomplete="off" placeholder="Apellido Paterno" name="a_paterno"  title="Nombre Apellido" maxlength="40">
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Nombre completo</label>
+                      <input type="text" class="form-control" value="<?php echo $regu['a_materno']; ?>" autocomplete="off" placeholder="Apellido Materno" name="a_materno"  title="Nombre Apellido" maxlength="40">
                     </div>
                     <div class="form-group">
                       <label class="text-danger"><i class="fa fa-user"></i>&nbsp;&nbsp;Nombre de usuario actual</label>

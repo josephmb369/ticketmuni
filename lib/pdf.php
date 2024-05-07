@@ -185,39 +185,52 @@ $x = $pdf->GetX();
 $y = $pdf->GetY();
 $pdf->SetFont("Arial","b",8);
 $pdf->SetTextColor(0,0,0);
-$pdf->MultiCell (35,14,utf8_decode('FALLA PRESENTADA'),1,'C');
+$pdf->MultiCell (35,18,utf8_decode('FALLA PRESENTADA'),1,'C');
 $x = $x + 35;
 $pdf->SetXY($x, $y);
 $pdf->SetFont("Arial","",8);
 $pdf->SetTextColor(0,0,144);
-$pdf->MultiCell (151,14,utf8_decode($reg['mensaje']),1,'L');
-
+$pdf->SetTextColor(255,255,255);
+$pdf->MultiCell (151,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec mi et nunc maximus malesuada. In congue nulla in dui tincidunt, in tincidunt erat accumsan. Aliquam tempus dictum arcu, sed mattis mauris tristique a. Ut arcu lectus, varius sed molestie eget, imperdiet eu dolor. Donec eget erat sed tellus varius consequat. Donec molestie non ex id ultrices. Vestibulum finibus fringilla velit, ut semper justo accumsan sit amet. Praesent orci urna, efficitur quis hendrerit eu, pretium ac ex. Aenean et risus eget nunc rhoncus vestibulum. Sed posuere porttitor tellus, ac imperdiet odio dapibus nec."),1,'L');
+$pdf->setTextColor(0,0,144);
+$pdf->SetXY($x, $y);
+$pdf->MultiCell (151,4,utf8_decode($reg['mensaje']),0,'L');
+$x = $pdf->GetX();
+$y = $pdf->GetY() + 14;
+$pdf->SetXY($x, $y);
 //DIAGNOSTICO
 $pdf->SetFont("Arial","b",8);
-$x = $pdf->GetX();
-$y = $pdf->GetY();
 $pdf->SetTextColor(0,0,0);
-$pdf->MultiCell (35,14,utf8_decode('DIAGNÓSTICO'),1,'C');
+$pdf->MultiCell (35,18,utf8_decode('DIAGNÓSTICO'),1,'C');
 $x = $x + 35;
 $pdf->SetXY($x, $y);
 $pdf->SetFont("Arial","",8);
 $pdf->SetTextColor(0,0,144);
-$pdf->MultiCell (151,14,utf8_decode($reg['diagnostico']),1,'L');
-
-//SOLUCION
-
+$pdf->SetTextColor(255,255,255);
+$pdf->MultiCell (151,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec mi et nunc maximus malesuada. In congue nulla in dui tincidunt, in tincidunt erat accumsan. Aliquam tempus dictum arcu, sed mattis mauris tristique a. Ut arcu lectus, varius sed molestie eget, imperdiet eu dolor. Donec eget erat sed tellus varius consequat. Donec molestie non ex id ultrices. Vestibulum finibus fringilla velit, ut semper justo accumsan sit amet. Praesent orci urna, efficitur quis hendrerit eu, pretium ac ex. Aenean et risus eget nunc rhoncus vestibulum. Sed posuere porttitor tellus, ac imperdiet odio dapibus nec."),1,'L');
+$pdf->setTextColor(0,0,144);
+$pdf->SetXY($x, $y);
+$pdf->MultiCell (151,4,utf8_decode($reg['diagnostico']),0,'L');
+$x = $pdf->GetX();
+$y = $pdf->GetY() + 14;
+$pdf->SetXY($x, $y);
+//DIAGNOSTICO
 $pdf->SetFont("Arial","b",8);
-$x = $pdf->GetX();
-$y = $pdf->GetY();
 $pdf->SetTextColor(0,0,0);
-$pdf->MultiCell (35,14,utf8_decode('SOLUCIÓN'),1,'C');
+$pdf->MultiCell (35,18,utf8_decode('SOLUCIÓN'),1,'C');
 $x = $x + 35;
 $pdf->SetXY($x, $y);
 $pdf->SetFont("Arial","",8);
 $pdf->SetTextColor(0,0,144);
-$pdf->MultiCell (151,14,utf8_decode($reg['solucion']),1,'L');
+$pdf->SetTextColor(255,255,255);
+$pdf->MultiCell (151,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec mi et nunc maximus malesuada. In congue nulla in dui tincidunt, in tincidunt erat accumsan. Aliquam tempus dictum arcu, sed mattis mauris tristique a. Ut arcu lectus, varius sed molestie eget, imperdiet eu dolor. Donec eget erat sed tellus varius consequat. Donec molestie non ex id ultrices. Vestibulum finibus fringilla velit, ut semper justo accumsan sit amet. Praesent orci urna, efficitur quis hendrerit eu, pretium ac ex. Aenean et risus eget nunc rhoncus vestibulum. Sed posuere porttitor tellus, ac imperdiet odio dapibus nec."),1,'L');
+$pdf->setTextColor(0,0,144);
+$pdf->SetXY($x, $y);
+$pdf->MultiCell (151,4,utf8_decode($reg['solucion']),0,'L');
+$x = $pdf->GetX();
+$y = $pdf->GetY() + 16;
+$pdf->SetXY($x, $y);
 
-$pdf->Cell (185.9,1,utf8_decode(''),0,1,'C');
 $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0,0,0);
     $pdf->SetTextColor(0,0,0);
@@ -227,7 +240,7 @@ $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0, 0, 0, 1); // Establecer el color de los bordes como transparente
     $pdf->SetFillColor(255, 255, 255, 0); 
     $pdf->SetTextColor(0,0,144);// Establecer el color del fondo como transparente
-    $pdf->MultiCell(185.9,14,utf8_decode($reg['observaciones']),1,1,'C');
+    $pdf->MultiCell(185.9,10,utf8_decode($reg['observaciones']),1,'C');
     $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0,0,0);
    
@@ -246,8 +259,10 @@ $pdf->Text($xCeldaPrincipal + 19, $yCeldaPrincipal - 23, utf8_decode('__________
 $pdf->Text($xCeldaPrincipal + 42, $yCeldaPrincipal - 15, utf8_decode('FIRMA'));
 $pdf->Text($xCeldaPrincipal + 1, $yCeldaPrincipal - 7.5, utf8_decode('NOMBRE:'));
 $pdf->SetFont("Arial","B",9);
+$pdf->SetTextColor(0,0,144);
 $pdf->Text($xCeldaPrincipal + 17, $yCeldaPrincipal - 7.5, utf8_decode($reg['nombres_tecnico'] . " " . $reg['a_paterno_tecnico'] . " " . $reg['a_materno_tecnico']));
 $pdf->SetFont("Arial","",9);
+$pdf->SetTextColor(0,0,0);
 $pdf->Text($xCeldaPrincipal + 1, $yCeldaPrincipal - 1, utf8_decode('FECHA:'));
 $pdf->Text($xCeldaPrincipal + 14, $yCeldaPrincipal - 1, utf8_decode($reg['fecha']));
 //
@@ -256,7 +271,15 @@ $pdf->Text($xCeldaPrincipal + 113, $yCeldaPrincipal - 23, utf8_decode('_________
 $pdf->Text($xCeldaPrincipal + 135, $yCeldaPrincipal - 15, utf8_decode('FIRMA'));
 $pdf->Text($xCeldaPrincipal + 94, $yCeldaPrincipal - 7.5, utf8_decode('NOMBRE:'));
 $pdf->SetFont("Arial","B",9);
-//$pdf->Text($xCeldaPrincipal + 110, $yCeldaPrincipal - 7.5, utf8_decode($reg['nombre_usuario'] . ' ' . $reg['a_paterno'] . ' ' . $reg['a_materno']));
+$pdf->SetTextColor(0,0,144);
+if ($reg['id_cliente'] != null){
+    $pdf->Text($xCeldaPrincipal + 110, $yCeldaPrincipal - 7.5, utf8_decode($reg['nombres'] . ' ' . $reg['a_paterno'] . ' ' . $reg['a_materno']));
+}
+
+if ($reg['id_admin'] != null) {
+    $pdf->Text($xCeldaPrincipal + 110, $yCeldaPrincipal - 7.5, utf8_decode($reg['nombre_completo']));
+}
+$pdf->SetTextColor(0,0,0);
 $pdf->SetFont("Arial","",9);
 $pdf->Text($xCeldaPrincipal + 94, $yCeldaPrincipal - 1, utf8_decode('FECHA:'));
 $pdf->Text($xCeldaPrincipal + 107, $yCeldaPrincipal - 1, utf8_decode($reg['fecha']));

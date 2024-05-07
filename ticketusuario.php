@@ -17,6 +17,11 @@ header('Content-Type: text/html; charset=UTF-8');
 <head>
   <title>Sistema de Ticket MDMM</title>
   <?php include "./inc/links.php"; ?>
+  <style>
+    body{
+      overflow-x: hidden !important;
+    }
+    </style>
 </head>
 
 <body>
@@ -58,7 +63,7 @@ header('Content-Type: text/html; charset=UTF-8');
                 $num_total_can=mysqli_num_rows($num_ticket_can);
             ?>
 
-            <div class="container-fluid h-screen  mt-250" style="margin-left:150px !important; max-width:88%; width:100%;margin:auto;">
+            <div class="container-fluid h-screen mt-250" style="margin-left:175px !important; max-width:85%; width:100%;margin:auto;">
                 <div class="row">
                     <div class="col-md-2-5 border-r bg-blue text-center">
                         <a href="./ticketusuario.php?ticket=all" class="text-white">

@@ -57,6 +57,7 @@
                                     <div class="container-fluid mt-5 mb-5">
                         <!-- Campos de entrada para la búsqueda y filtro por fecha -->
                                         <input type="text" class="form-control" name="clients" id="clients" placeholder="Buscar por palabra clave...">
+                                        <button id="filter" class="btn btn-primary" style="max-width:10%;float:left;" >Filtrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -188,11 +189,11 @@
 <script type="text/javascript">
     $(document).ready(function(){
         var clients;
-        $('#clients').on("change", function(){
+        $('#filter').click( function(){
             let searchTerm = $('#clients').val().trim();
             $.ajax({
                 type: 'POST',
-                url: 'admin/filter_clients.php',
+                url: 'admin/filter_tecnics.php',
                 data: { 
                     searchTerm: searchTerm
                 },
@@ -204,9 +205,9 @@
                         data.forEach((row) => {
                             tr = `<tr>
                                 <td class="text-center"></td>
-                                <td>${row.nombres} ${row.a_paterno} ${row.a_materno}</td>
-                                <td>${row.nombre_usuario}</td>
-                                <td>${row.email_cliente}</td>
+                                <td>${row.nombres_tecnico} ${row.a_paterno_tecnico} ${row.a_materno_tecnico}</td>
+                                <td>${row.nombre_tecnico}</td>
+                                <td>${row.email_tecnico}</td>
                                 
                                 <td>
                                     <a href="admin.php?view=configtecnico&id=${row.id}" class="btn btn-sm btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>

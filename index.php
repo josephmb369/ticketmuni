@@ -19,6 +19,11 @@ header('Content-Type: text/html; charset=UTF-8');
   <?php 
   include "./inc/links.php"; 
   ?>
+  <style>
+    body{
+      overflow-x: hidden !important;
+    }
+    </style>
 </head>
 
 <body>
