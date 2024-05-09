@@ -38,9 +38,9 @@
        /* Actualizar cuenta admin */
         
         if(isset($_POST['nom_admin_up']) && isset($_POST['admin_up']) && isset($_POST['old_nom_admin_up'])){
-            $nom_complete_update=MysqlQuery::RequestPost('nom_admin_up');
-            $nom_admin_update=MysqlQuery::RequestPost('admin_up');
-            $old_nom_admin_update=MysqlQuery::RequestPost('old_nom_admin_up');
+            $nom_complete_update=utf8_encode(MysqlQuery::RequestPost('nom_admin_up'));
+            $nom_admin_update=utf8_encode(MysqlQuery::RequestPost('admin_up'));
+            $old_nom_admin_update=utf8_encode(MysqlQuery::RequestPost('old_nom_admin_up'));
             $pass_admin_update=md5(MysqlQuery::RequestPost('admin_clave_up'));
             $old_pass_admin_uptade=md5(MysqlQuery::RequestPost('old_admin_clave_up'));
             $email_admin_update=MysqlQuery::RequestPost('admin_email_up');
@@ -139,11 +139,11 @@
                              </div>
                              <div class="form-group">
                                <label><i class="fa fa-user"></i>&nbsp;Nombre de administrador anterior</label>
-                               <input type="text" class="form-control" value="<?php echo $reg1['nombre_admin']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" required="" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
+                               <input type="text" class="form-control" value="<?php echo $reg1['nombre_admin']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" required="" title="Solo es validos letras y numeros no caracteres especiale" maxlength="15">
                              </div>
                              <div class="form-group has-success has-feedback">
                                <label class="control-label"><i class="fa fa-user"></i>&nbsp;Nuevo nombre de administrador</label>
-                               <input type="text" id="input_user2" class="form-control" name="admin_up" placeholder="Nombre de administrador"  pattern="[a-zA-Z0-9]{1,15}" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
+                               <input type="text" id="input_user2" class="form-control" name="admin_up" placeholder="Nombre de administrador"  pattern="[a-zA-Z0-9]{1,15}" title="Solo es validos letras y numeros no caracteres especiale" maxlength="15">
                                <div id="com_form2"></div>
                              </div>
                              <div class="form-group">

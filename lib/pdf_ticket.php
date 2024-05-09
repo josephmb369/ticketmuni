@@ -155,37 +155,56 @@ $x = $pdf->GetX();
 $y = $pdf->GetY();
 $pdf->SetFont("Arial","b",8);
 $pdf->SetTextColor(0,0,0);
-$pdf->MultiCell (35,24,utf8_decode('FALLA PRESENTADA'),1,'C');
+//FALLA PRESENTADA
+$x = $pdf->GetX();
+$y = $pdf->GetY();
+$pdf->SetFont("Arial","b",8);
+$pdf->SetTextColor(0,0,0);
+$pdf->MultiCell (35,18,utf8_decode('FALLA PRESENTADA'),1,'C');
 $x = $x + 35;
 $pdf->SetXY($x, $y);
 $pdf->SetFont("Arial","",8);
 $pdf->SetTextColor(0,0,144);
-$pdf->MultiCell (151,4,utf8_decode($reg['mensaje']),1,'L');
-
+$pdf->SetTextColor(255,255,255);
+$pdf->MultiCell (151,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec mi et nunc maximus malesuada. In congue nulla in dui tincidunt, in tincidunt erat accumsan. Aliquam tempus dictum arcu, sed mattis mauris tristique a. Ut arcu lectus, varius sed molestie eget, imperdiet eu dolor. Donec eget erat sed tellus varius consequat. Donec molestie non ex id ultrices. Vestibulum finibus fringilla velit, ut semper justo accumsan sit amet. Praesent orci urna, efficitur quis hendrerit eu, pretium ac ex. Aenean et risus eget nunc rhoncus vestibulum. Sed posuere porttitor tellus, ac imperdiet odio dapibus nec."),1,'L');
+$pdf->setTextColor(0,0,144);
+$pdf->SetXY($x, $y);
+$pdf->MultiCell (151,4,utf8_decode($reg['mensaje']),0,'L');
+$x = $pdf->GetX();
+$y = $pdf->GetY() + 14;
+$pdf->SetXY($x, $y);
 //DIAGNOSTICO
 $pdf->SetFont("Arial","b",8);
-$x = $pdf->GetX();
-$y = $pdf->GetY();
 $pdf->SetTextColor(0,0,0);
-$pdf->MultiCell (35,24,utf8_decode('DIAGNÓSTICO'),1,'C');
+$pdf->MultiCell (35,18,utf8_decode('DIAGNÓSTICO'),1,'C');
 $x = $x + 35;
 $pdf->SetXY($x, $y);
 $pdf->SetFont("Arial","",8);
 $pdf->SetTextColor(0,0,144);
-$pdf->MultiCell (151,4,utf8_decode($reg['diagnostico']),1,'L');
-
-//SOLUCION
-
+$pdf->SetTextColor(255,255,255);
+$pdf->MultiCell (151,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec mi et nunc maximus malesuada. In congue nulla in dui tincidunt, in tincidunt erat accumsan. Aliquam tempus dictum arcu, sed mattis mauris tristique a. Ut arcu lectus, varius sed molestie eget, imperdiet eu dolor. Donec eget erat sed tellus varius consequat. Donec molestie non ex id ultrices. Vestibulum finibus fringilla velit, ut semper justo accumsan sit amet. Praesent orci urna, efficitur quis hendrerit eu, pretium ac ex. Aenean et risus eget nunc rhoncus vestibulum. Sed posuere porttitor tellus, ac imperdiet odio dapibus nec."),1,'L');
+$pdf->setTextColor(0,0,144);
+$pdf->SetXY($x, $y);
+$pdf->MultiCell (151,4,utf8_decode($reg['diagnostico']),0,'L');
+$x = $pdf->GetX();
+$y = $pdf->GetY() + 14;
+$pdf->SetXY($x, $y);
+//DIAGNOSTICO
 $pdf->SetFont("Arial","b",8);
-$x = $pdf->GetX();
-$y = $pdf->GetY();
 $pdf->SetTextColor(0,0,0);
-$pdf->MultiCell (35,24,utf8_decode('SOLUCIÓN'),1,'C');
+$pdf->MultiCell (35,18,utf8_decode('SOLUCIÓN'),1,'C');
 $x = $x + 35;
 $pdf->SetXY($x, $y);
 $pdf->SetFont("Arial","",8);
 $pdf->SetTextColor(0,0,144);
-$pdf->MultiCell (151,4,utf8_decode($reg['solucion']),1,'L');
+$pdf->SetTextColor(255,255,255);
+$pdf->MultiCell (151,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec mi et nunc maximus malesuada. In congue nulla in dui tincidunt, in tincidunt erat accumsan. Aliquam tempus dictum arcu, sed mattis mauris tristique a. Ut arcu lectus, varius sed molestie eget, imperdiet eu dolor. Donec eget erat sed tellus varius consequat. Donec molestie non ex id ultrices. Vestibulum finibus fringilla velit, ut semper justo accumsan sit amet. Praesent orci urna, efficitur quis hendrerit eu, pretium ac ex. Aenean et risus eget nunc rhoncus vestibulum. Sed posuere porttitor tellus, ac imperdiet odio dapibus nec."),1,'L');
+$pdf->setTextColor(0,0,144);
+$pdf->SetXY($x, $y);
+$pdf->MultiCell (151,4,utf8_decode($reg['solucion']),0,'L');
+$x = $pdf->GetX();
+$y = $pdf->GetY() + 16;
+$pdf->SetXY($x, $y);
 
 $pdf->Cell (185.9,1,utf8_decode(''),0,1,'C');
 $pdf->SetFillColor(0,255,255);
@@ -197,7 +216,7 @@ $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0, 0, 0, 1); // Establecer el color de los bordes como transparente
     $pdf->SetFillColor(255, 255, 255, 0); 
     $pdf->SetTextColor(0,0,144);// Establecer el color del fondo como transparente
-    $pdf->MultiCell(185.9,4,utf8_decode($reg['observaciones']),1,1,'C');
+    $pdf->MultiCell(185.9,12,utf8_decode($reg['observaciones']),1,'C');
     $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0,0,0);
    

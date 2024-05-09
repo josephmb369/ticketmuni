@@ -85,14 +85,15 @@
         /*Script para actualizar datos de cuenta*/
         if(isset($_POST['old_pass_update']) && isset($_POST['new_pass_update'])){
 
-          $nombre_complete_update=MysqlQuery::RequestPost('name_complete_update');
+          $nombre_complete_update=utf8_encode(MysqlQuery::RequestPost('name_complete_update'));
           $old_user_update=MysqlQuery::RequestPost('old_user_update');
           $new_user_update=MysqlQuery::RequestPost('new_user_update');
           $old_pass_update=md5(MysqlQuery::RequestPost('old_pass_update'));
           $new_pass_update=md5(MysqlQuery::RequestPost('new_pass_update'));
           $email_update=MysqlQuery::RequestPost('email_update');
-          $a_paterno=MysqlQuery::RequestPost('a_paterno');
-          $a_materno=MysqlQuery::RequestPost('a_materno');
+          $a_paterno=utf8_encode(MysqlQuery::RequestPost('a_paterno'));
+          $a_materno=utf8_encode(MysqlQuery::RequestPost('a_materno'));
+          
            $sql=Mysql::consulta("SELECT * FROM cliente WHERE id_cliente=".$_GET['id']);
            
           if(mysqli_num_rows($sql)>=1){
@@ -153,16 +154,17 @@
                 <div class="panel-body text-center well">
                   <form action="" method="post" role="form">
                     <div class="form-group">
+                      
                       <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Nombre completo</label>
-                      <input type="text" class="form-control" value="<?php echo $regu['nombres'];?>" autocomplete="off" placeholder="Nombres " name="name_complete_update"  title="Nombre Apellido" maxlength="40">
+                      <input type="text" class="form-control" value="<?php echo $regu['nombres'];?>" autocomplete="off" placeholder="Nombres " name="name_complete_update"  title="Nombre Apellido" maxlength="60">
                     </div>
                     <div class="form-group">
-                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Nombre completo</label>
-                      <input type="text" class="form-control" value="<?php echo $regu['a_paterno'];?>" autocomplete="off" placeholder="Apellido Paterno" name="a_paterno"  title="Nombre Apellido" maxlength="40">
+                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Apellido Paterno</label>
+                      <input type="text" class="form-control" value="<?php echo $regu['a_paterno'];?>" autocomplete="off" placeholder="Apellido Paterno" name="a_paterno"  title="Nombre Apellido" maxlength="60">
                     </div>
                     <div class="form-group">
-                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Nombre completo</label>
-                      <input type="text" class="form-control" value="<?php echo $regu['a_materno']; ?>" autocomplete="off" placeholder="Apellido Materno" name="a_materno"  title="Nombre Apellido" maxlength="40">
+                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Apellido Materno</label>
+                      <input type="text" class="form-control" value="<?php echo $regu['a_materno']; ?>" autocomplete="off" placeholder="Apellido Materno" name="a_materno"  title="Nombre Apellido" maxlength="60">
                     </div>
                     <div class="form-group">
                       <label class="text-danger"><i class="fa fa-user"></i>&nbsp;&nbsp;Nombre de usuario actual</label>

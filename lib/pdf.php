@@ -240,7 +240,7 @@ $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0, 0, 0, 1); // Establecer el color de los bordes como transparente
     $pdf->SetFillColor(255, 255, 255, 0); 
     $pdf->SetTextColor(0,0,144);// Establecer el color del fondo como transparente
-    $pdf->MultiCell(185.9,10,utf8_decode($reg['observaciones']),1,'C');
+    $pdf->MultiCell(185.9,12,utf8_decode($reg['observaciones']),1,'C');
     $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0,0,0);
    

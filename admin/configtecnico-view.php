@@ -38,9 +38,9 @@ if(isset($_POST['nom_admin_reg']) && isset($_POST['admin_reg']) && isset($_POST[
    /* Actualizar cuenta admin */
     
     if(isset($_POST['nom_admin_up']) && isset($_POST['admin_up']) && isset($_POST['old_nom_admin_up'])){
-        $nom_complete_update=MysqlQuery::RequestPost('nom_admin_up');
-        $nom_admin_update=MysqlQuery::RequestPost('admin_up');
-        $old_nom_admin_update=MysqlQuery::RequestPost('old_nom_admin_up');
+        $nom_complete_update=utf8_encode(MysqlQuery::RequestPost('nom_admin_up'));
+        $nom_admin_update=utf8_encode(MysqlQuery::RequestPost('admin_up'));
+        $old_nom_admin_update=utf8_encode(MysqlQuery::RequestPost('old_nom_admin_up'));
         $pass_admin_update=md5(MysqlQuery::RequestPost('admin_clave_up'));
         $old_pass_admin_uptade=md5(MysqlQuery::RequestPost('old_admin_clave_up'));
         $email_admin_update=MysqlQuery::RequestPost('admin_email_up');

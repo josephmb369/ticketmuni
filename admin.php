@@ -12,9 +12,10 @@ if($_SESSION['tipo']!=("admin" || "tecnico")){
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <title>Sistema de Ticket MDMM</title>
+        <meta charset="utf-8">
         <link rel="shortcut icon" href="img/logomuni.png">
         <?php include "./inc/links.php"; ?>        
     </head>
