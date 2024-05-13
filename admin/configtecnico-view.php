@@ -37,19 +37,46 @@ if(isset($_POST['nom_admin_reg']) && isset($_POST['admin_reg']) && isset($_POST[
     
    /* Actualizar cuenta admin */
     
-    if(isset($_POST['nom_admin_up']) && isset($_POST['admin_up']) && isset($_POST['old_nom_admin_up'])){
-        $nom_complete_update=utf8_encode(MysqlQuery::RequestPost('nom_admin_up'));
+    if( isset($_POST['old_nom_admin_up'])){
+        $sql = "UPDATE tecnico SET ";
+        $nom_complete_update=utf8_encode(MysqlQuery::RequestPost('name_complete_update'));
+        $tx = [];
+        if ( $nom_complete_update ){
+            array_push($tx, "nombres_tecnico='$nom_complete_update'");
+        }
         $nom_admin_update=utf8_encode(MysqlQuery::RequestPost('admin_up'));
-        $old_nom_admin_update=utf8_encode(MysqlQuery::RequestPost('old_nom_admin_up'));
+        if ( $nom_admin_update ){
+            array_push($tx, "nombre_tecnico='$nom_admin_update'");
+        }
         $pass_admin_update=md5(MysqlQuery::RequestPost('admin_clave_up'));
+        if ( $pass_admin_update ){
+            array_push($tx, "clave='$pass_admin_update'");
+        }
         $old_pass_admin_uptade=md5(MysqlQuery::RequestPost('old_admin_clave_up'));
         $email_admin_update=MysqlQuery::RequestPost('admin_email_up');
-
-        $sql=Mysql::consulta("SELECT * FROM tecnico WHERE id_tecnico=".$_GET['id']);
-        if(mysqli_num_rows($sql)>=1){
+        if ( $email_admin_update ){
+            array_push($tx, "email_tecnico='$email_admin_update'");
+        }
+        $a_paterno=utf8_encode(MysqlQuery::RequestPost('a_paterno'));
+        if ( $a_paterno ){
+            array_push($tx, "a_paterno_tecnico='$a_paterno'");
+        }
+        $a_materno=utf8_encode(MysqlQuery::RequestPost('a_materno'));
+        if ( $a_materno ){
+            array_push($tx, "a_materno_tecnico='$a_materno'");
+        }
+        foreach( $tx as $field){
+            if ( end($tx) != $field ){
+                $sql .= $field . ', '; 
+            }else{
+                $sql .= $field . " WHERE id_tecnico=".$_GET['id'];
+            }
+        }
+        $tecnico =Mysql::consulta("SELECT * FROM tecnico WHERE id_tecnico=".$_GET['id']);
+        if(mysqli_num_rows($tecnico)>=1){
           try{
             //if(MysqlQuery::Actualizar("tecnico", "nombres_tecnico='$nom_complete_update', nombre_tecnico='$nom_admin_update', clave='$pass_admin_update', email_tecnico='$email_admin_update'")){
-              if(Mysql::consulta("UPDATE tecnico SET nombres_tecnico='$nom_complete_update', nombre_tecnico='$nom_admin_update', clave='$pass_admin_update', email_tecnico='$email_admin_update'  WHERE id_tecnico=".$_GET['id'])){
+              if(Mysql::consulta($sql)){
                 echo '
                     <div class="alert alert-info alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -139,29 +166,38 @@ if(isset($_POST['nom_admin_reg']) && isset($_POST['admin_reg']) && isset($_POST[
                         ?>
                          <form role="form" action="" method="POST">
                          <div class="form-group">
-                           <label><i class="fa fa-male"></i>&nbsp;Nombre completo</label>
-                           <input type="text" class="form-control" value="<?php echo $reg1['nombres_tecnico']; ?>" name="nom_admin_up" placeholder="Nombre completo" title="Nombre Apellido" maxlength="40">
-                         </div>
+                      
+                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Nombres</label>
+                      <input type="text" class="form-control" value="<?php echo $reg1['nombres_tecnico'];?>" autocomplete="off" placeholder="Nombres " name="name_complete_update"  title="Nombre Apellido" maxlength="60">
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Apellido Paterno</label>
+                      <input type="text" class="form-control" value="<?php echo $reg1['a_paterno_tecnico'];?>" autocomplete="off" placeholder="Apellido Paterno" name="a_paterno"  title="Nombre Apellido" maxlength="60">
+                    </div>
+                    <div class="form-group">
+                      <label class="text-primary"><i class="fa fa-male"></i>&nbsp;&nbsp;Apellido Materno</label>
+                      <input type="text" class="form-control" value="<?php echo $reg1['a_materno_tecnico']; ?>" autocomplete="off" placeholder="Apellido Materno" name="a_materno"  title="Nombre Apellido" maxlength="60">
+                    </div>
                          <div class="form-group">
                            <label><i class="fa fa-user"></i>&nbsp;Nombre de administrador anterior</label>
-                           <input type="text" class="form-control" value="<?php echo $reg1['nombre_tecnico']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
+                           <input type="text" class="form-control" autocomplete="off" value="<?php echo $reg1['nombre_tecnico']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
                          </div>
                          <div class="form-group has-success has-feedback">
-                           <label class="control-label"><i class="fa fa-user"></i>&nbsp;Nuevo nombre de administrador</label>
-                           <input type="text" id="input_user2" class="form-control" name="admin_up" placeholder="Nombre de administrador" pattern="[a-zA-Z0-9]{1,15}" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
+                           <label class="control-label"><i class="fa fa-user"></i>&nbsp;Nuevo nombre de tecnico</label>
+                           <input type="text" id="input_user2" autocomplete="off" class="form-control" name="admin_up" placeholder="Nombre de administrador" pattern="[a-zA-Z0-9]{1,15}" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
                            <div id="com_form2"></div>
                          </div>
                          <div class="form-group">
                            <label><i class="fa fa-shield"></i>&nbsp;Contraseña anterior</label>
-                           <input type="password" class="form-control" name="old_admin_clave_up" placeholder="Contraseña anterior" required="">
+                           <input type="password" class="form-control" autocomplete="off" name="old_admin_clave_up" placeholder="Contraseña anterior">
                          </div>
                              <div class="form-group">
                            <label><i class="fa fa-shield"></i>&nbsp;Nueva contraseña</label>
-                           <input type="password" class="form-control" name="admin_clave_up" placeholder="Nueva contraseña">
+                           <input type="password" class="form-control" autocomplete="off" name="admin_clave_up" placeholder="Nueva contraseña">
                          </div>
                          <div class="form-group">
                            <label><i class="fa fa-envelope"></i>&nbsp;Email</label>
-                           <input type="email" class="form-control" value="<?php echo $reg1['email_tecnico']; ?>" name="admin_email_up"  placeholder="Email administrador" required="">
+                           <input type="email" class="form-control" autocomplete="off" value="<?php echo $reg1['email_tecnico']; ?>" name="admin_email_up"  placeholder="Email administrador" required="">
                          </div><button type="submit" class="btn btn-info">Actualizar datos</button>
                        </form>
                      </div>

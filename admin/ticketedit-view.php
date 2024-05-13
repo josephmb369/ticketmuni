@@ -100,8 +100,8 @@
     
     
     $id = MysqlQuery::RequestGet('id');
-
-    $id = mysqli_real_escape_string($conexion, $id);
+    echo $id;
+   
 
     // $id_cliente = MysqlQuery::RequestGet('id_cliente');
     // $sql_cliente = Mysql::consulta("SELECT * FROM ticket INNER JOIN cliente ON ticket.id_cliente = cliente.id_cliente WHERE ticket.id_cliente = '$id_cliente'");
