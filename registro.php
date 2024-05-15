@@ -91,7 +91,7 @@ if (!$conexion) {
               </div>
               <div class="form-group">
                 <label><span class="fa fa-male"></span>&nbsp;Nombre de usuario</label>
-                <input type="text" class="form-control" name="nombre_usuario" placeholder="Escribe tu nombre de usuario" required="" />
+                <input type="text" class="form-control" name="nombre_usuario" placeholder="Escribe tu nombre de usuario" required="" title="Solo es validos letras y numeros no caracteres especiales" maxlength="20" pattern="[a-zA-Z0-9 ]{1,30}" />
               </div>
               <div class="form-group">
                 <label><i class="fa fa-shield"></i>&nbsp;Contraseña</label>

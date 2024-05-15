@@ -180,7 +180,7 @@ if(isset($_POST['nom_admin_reg']) && isset($_POST['admin_reg']) && isset($_POST[
                     </div>
                          <div class="form-group">
                            <label><i class="fa fa-user"></i>&nbsp;Nombre de administrador anterior</label>
-                           <input type="text" class="form-control" autocomplete="off" value="<?php echo $reg1['nombre_tecnico']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" title="Ejemplo7 maximo 15 caracteres" maxlength="15">
+                           <input type="text" class="form-control" autocomplete="off" value="<?php echo $reg1['nombre_tecnico']; ?>" name="old_nom_admin_up" placeholder="Nombre anterior de administrador" title="Solo es validos letras y numeros no caracteres especiales" maxlength="20" pattern="[a-zA-Z0-9 ]{1,30}">
                          </div>
                          <div class="form-group has-success has-feedback">
                            <label class="control-label"><i class="fa fa-user"></i>&nbsp;Nuevo nombre de tecnico</label>

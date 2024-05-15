@@ -168,7 +168,7 @@
                     </div>
                     <div class="form-group">
                       <label class="text-danger"><i class="fa fa-user"></i>&nbsp;&nbsp;Nombre de usuario actual</label>
-                      <input type="text" class="form-control" value="<?php echo $regu['nombre_usuario'] ?>" placeholder="Nombre de usuario actual" autocomplete="off" name="old_user_update" pattern="[a-zA-Z0-9 ]{1,30}" title="Ejemplo7" maxlength="20">
+                      <input type="text" class="form-control" value="<?php echo $regu['nombre_usuario'] ?>" placeholder="Nombre de usuario actual" autocomplete="off" name="old_user_update" title="Solo es validos letras y numeros no caracteres especiales" maxlength="20" pattern="[a-zA-Z0-9 ]{1,30}">
                     </div>
                     <div class="form-group  has-success has-feedback">
                       <label class="text-primary"><i class="fa fa-user"></i>&nbsp;&nbsp;Nombre de usuario nuevo</label>

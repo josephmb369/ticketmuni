@@ -228,7 +228,7 @@ $pdf->setTextColor(0,0,144);
 $pdf->SetXY($x, $y);
 $pdf->MultiCell (151,4,utf8_decode($reg['solucion']),0,'L');
 $x = $pdf->GetX();
-$y = $pdf->GetY() + 16;
+$y = $pdf->GetY() + 14;
 $pdf->SetXY($x, $y);
 
 $pdf->SetFillColor(0,255,255);
@@ -240,21 +240,36 @@ $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0, 0, 0, 1); // Establecer el color de los bordes como transparente
     $pdf->SetFillColor(255, 255, 255, 0); 
     $pdf->SetTextColor(0,0,144);// Establecer el color del fondo como transparente
-    $pdf->MultiCell(185.9,12,utf8_decode($reg['observaciones']),1,'C');
+    
     $pdf->SetFillColor(0,255,255);
     $pdf->SetDrawColor(0,0,0);
-   
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x, $y);
+    $pdf->SetTextColor(255,255,255);
+    $pdf->MultiCell (185.9,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec mi et nunc maximus malesuada. In congue nulla in dui tincidunt, in tincidunt erat accumsan. Aliquam tempus dictum arcu, sed mattis mauris tristique a. Ut arcu lectus, varius sed molestie eget, imperdiet eu dolor. Donec eget erat sed tellus varius consequat. Donec molestie non ex id ultrices. Vestibulum finibus fringilla velit, ut semper justo accumsan sit amet. Praesent orci urna, efficitur quis hendrerit eu, pretium ac ex. Aenean et risus eget nunc rhoncus vestibulum. Sed posuere porttitor tellus, ac imperdiet odio dapibus nec."),1,'L');
+    $pdf->SetXY($x, $y);
+    $pdf->SetTextColor(0,0,144);
+    $pdf->MultiCell(185.9,4,utf8_decode($reg['observaciones']),0,'C');
+    $x = $pdf->GetX();
+    $y = $pdf->GetY() + 11;
+    $pdf->SetXY($x, $y);
     $pdf->Cell (92.95,40,utf8_decode(''),1,0,'C');
     $pdf->Cell (92.95,40,utf8_decode(''),1,1,'C');
+    
 // Obtener las coordenadas actuales para la celda principal
+
+
 $xCeldaPrincipal = $pdf->GetX();
 $yCeldaPrincipal = $pdf->GetY();
-
+$pdf->SetXY($xCeldaPrincipal, $yCeldaPrincipal);
 // Nested Cell con texto (transparente)
+
 $pdf->SetDrawColor(255, 255, 255, 0); // Establecer el color de los bordes como transparente
 $pdf->SetFillColor(255, 255, 255, 0); // Establecer el color del fondo como transparente
 $pdf->SetTextColor(0,0,0);
-$pdf->Text($xCeldaPrincipal + 31, $yCeldaPrincipal - 35.5, utf8_decode('SOPORTE TÉCNICO')); // Texto dentro de la celda principal
+
+$pdf->Text($xCeldaPrincipal + 31, $yCeldaPrincipal - 25.5, utf8_decode('SOPORTE TÉCNICO')); // Texto dentro de la celda principal
 $pdf->Text($xCeldaPrincipal + 19, $yCeldaPrincipal - 23, utf8_decode('_______________________________')); // Texto dentro de la celda principal
 $pdf->Text($xCeldaPrincipal + 42, $yCeldaPrincipal - 15, utf8_decode('FIRMA'));
 $pdf->Text($xCeldaPrincipal + 1, $yCeldaPrincipal - 7.5, utf8_decode('NOMBRE:'));

@@ -21,7 +21,7 @@ while ($row = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
 }
 // Devolver los resultados como JSON
 
-echo json_encode($tecnicos);
+echo var_dump(json_encode($tecnicos));
 
 // Cerrar la conexión
 $conn->close();

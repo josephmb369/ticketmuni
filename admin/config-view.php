@@ -135,7 +135,7 @@
                              <form role="form" action="" method="POST">
                              <div class="form-group">
                                <label><i class="fa fa-male"></i>&nbsp;Nombre completo</label>
-                               <input type="text" class="form-control" value="<?php echo $reg1['nombre_completo']; ?>" name="nom_admin_up" placeholder="Nombre completo" title="Nombre Apellido" maxlength="40">
+                               <input type="text" class="form-control" value="<?php echo $reg1['nombre_completo']; ?>" name="nom_admin_up" placeholder="Nombre completo" title="Solo es validos letras y numeros no caracteres especiales" maxlength="20" pattern="[a-zA-Z0-9 ]{1,30}">
                              </div>
                              <div class="form-group">
                                <label><i class="fa fa-user"></i>&nbsp;Nombre de administrador anterior</label>
