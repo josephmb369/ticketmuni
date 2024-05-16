@@ -115,7 +115,7 @@ if (!$conexion) {
               </div>
               <div class="form-group">
                 <label><span class=""></span>Area</label>
-                <input type="text" class="form-control" name="area" placeholder="Escribe el area" required="" />
+                <input type="text" class="form-control" name="area" placeholder="Escribe el area" required="" value="Informática" readonly="readonly"/>
               </div>
               <div class="form-group">
                 <label><span class="fa fa-envelope"></span>&nbsp;Correo Electrónico</label>

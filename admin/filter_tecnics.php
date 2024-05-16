@@ -20,9 +20,7 @@ while ($row = mysqli_fetch_array($consulta, MYSQLI_ASSOC)) {
  $tecnicos[] = $row;
 }
 // Devolver los resultados como JSON
-
-echo var_dump(json_encode($tecnicos));
-
+echo json_encode($tecnicos);
 // Cerrar la conexión
 $conn->close();
 $con->close();

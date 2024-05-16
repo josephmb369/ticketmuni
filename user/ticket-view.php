@@ -160,18 +160,56 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-bottom:40px !important;">
                           <label  class="col-sm-2 control-label">Area</label>
                           <div class="col-sm-10">
                               <div class='input-group'>
-                              <input type="text" class="form-control" placeholder="Area" required="" pattern="[a-zA-Z ]{1,30}" name="area_ticket" title="Area" value="<?php echo $area_cli ?>" readonly>
-                                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                              </div>
+                              <select name="area" id="" class="form-control">
+                                <option value="Procaduría Pública Municipal">Procaduría Pública Municipal</option>
+                                <option value="Concejo municipal">Concejo municipal</option>
+                                <option value="Órgano de control institucional">Órgano de control institucional</option>
+                                <option value="Comisión de regidores">Comisión de regidores</option>
+                                <option value="Alcaldía">Alcaldía</option>
+                                <option value="Concejo de Coordinación local">Concejo de Coordinación local</option>
+                                <option value="Junta de Delegados Vecinales">Junta de Delegados Vecinales</option>
+                                <option value="Gerencia Municipal">Gerencia Municipal</option>
+                                <option value="Secretaría General">Secretaría General</option>
+                                <option value="Oficina de Atención al Ciudadano y Gestión Documentaria">Oficina de Atención al Ciudadano y Gestión Documentaria</option>
+                                <option value="Oficina de Estado Civil">"Oficina de Estado Civil</option>
+                                <option value="Oficina General de Participación Vecinal">Oficina General de Participación Vecinal</option>
+                                <option value="Oficina General de Comunicaciones">Oficina General de Comunicaciones</option>
+                                <option value="Oficina General de Administración">Oficina General de Administración</option>
+                                <option value="Oficina de Tesorería">Oficina de Tesorería</option>
+                                <option value="Oficina de Gestión de Recursos Humanos">Oficina de Gestión de Recursos Humanos</option>
+                                <option value="Oficina de Contabilidad">Oficina de Contabilidad</option>
+                                <option value="Oficina de Abastecimiento y Control Patrimonial">Oficina de Abastecimiento y Control Patrimonial</option>
+                                <option value="Oficina de Tecnología de Información">Oficina de Tecnología de Información</option>
+                                <option value="Oficina de Contabilidad">Oficina de Contabilidad</option>
+                                <option value="Oficina de Abastecimiento y Control Patrimonial">Oficina de Abastecimiento y Control Patrimonial</option>
+                                <option value="Gerencia de Administración Tributaria">Gerencia de Administración Tributaria</option>
+                                  <option value="Subgerencia de Recaudación Tributaria">Subgerencia de Recaudación Tributaria</option>
+                                  <option value="Subgerencia de Ejecución Coactiva">Subgerencia de Ejecución Coactiva</option>
+                                  <option value="Subgerencia de registro, ORientaci[on al Contribuyente y Fiscalización Tributaria">Subgerencia de registro, ORientaci[on al Contribuyente y Fiscalización Tributaria</option>
+                                <option value="Gerencia de Desarrollo Territorial e Infraestructura">Gerencia de Desarrollo Territorial e Infraestructura</option>
+                                  <option value="Subgerencia de Desarrollo Territorial">Subgerencia de Desarrollo Territorial</option>
+                                <option value="Subgerencia de Comercialización, Anuncios y Desarrollo Económico">Subgerencia de Comercialización, Anuncios y Desarrollo Económico</option>
+                                <option value="Subgerencia de Gestión de Riesgo de Desastres">Subgerencia de Gestión de Riesgo de Desastres</option>
+
+                                <option value="Subgerencia de Serenazgo">Subgerencia de Serenazgo</option>
+                                <option value="Subgerencia de Fiscalización y Sanciones">Subgerencia de Fiscalización y Sanciones</option>
+                                <option value="Subgerencia de Limpieza Pública">Subgerencia de Limpieza Pública</option>
+                                <option value="Subgerencia de Áreas Verdes y Ornato">Subgerencia de Áreas Verdes y Ornato</option>
+
+                                <option value="Gerencia de Desarrollo Humano, Educación, Cultura, Deportes y Recreación">Gerencia de Desarrollo Humano, Educación, Cultura, Deportes y Recreación</option>
+
+                                <option value="Subgerencia de Programas Sociales y Salud.">Subgerencia de Programas Sociales y Salud.</option>
+                                <option value="Subgerencia de Servicios Socilaes.">Subgerencia de Servicios Socilaes.</option>
+                              </select>
                           </div>
                         </div>
                         
 
-                        <div class="form-group">
+                        <div class="form-group mt-2" style="margin-top:40px;">
                           <label  class="col-sm-2 control-label">Tipo de Insidente</label>
                           <div class="col-sm-10">
                               <div class='input-group'>

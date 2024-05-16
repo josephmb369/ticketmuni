@@ -104,7 +104,7 @@ header('Content-Type: text/html; charset=UTF-8');
       </div>
       <?php }else{?>
           <div class="col-md-6">
-            <div class="w-50 mx-auto border-login p-2 sombra">
+            <div class="mx-auto border-login p-2 sombra" style="max-width:70%; width:100%;">
               <div class="col-md-12 text-center mb-4">
                 <img src="./img/bloqueado.png" width="150" alt="">
               </div>
@@ -136,6 +136,12 @@ header('Content-Type: text/html; charset=UTF-8');
                 <label>
                     <input type="radio" name="optionsRadios" value="admin">
                      Administrador
+                </label>
+             </div>
+             <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" value="sadmin">
+                     Super Administrador
                 </label>
              </div>
               </div>
