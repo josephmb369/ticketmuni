@@ -160,11 +160,12 @@
                         </div>
 
 
-                        <div class="form-group" style="margin-bottom:40px !important;">
+                        <div class="form-group">
                           <label  class="col-sm-2 control-label">Area</label>
                           <div class="col-sm-10">
                               <div class='input-group'>
-                              <select name="area" id="" class="form-control">
+                              <select name="area" id="" class="form-control" placeholder="">
+                                <option value="">Escoja un área</option>
                                 <option value="Procaduría Pública Municipal">Procaduría Pública Municipal</option>
                                 <option value="Concejo municipal">Concejo municipal</option>
                                 <option value="Órgano de control institucional">Órgano de control institucional</option>
@@ -203,15 +204,16 @@
                                 <option value="Gerencia de Desarrollo Humano, Educación, Cultura, Deportes y Recreación">Gerencia de Desarrollo Humano, Educación, Cultura, Deportes y Recreación</option>
 
                                 <option value="Subgerencia de Programas Sociales y Salud.">Subgerencia de Programas Sociales y Salud.</option>
-                                <option value="Subgerencia de Servicios Socilaes.">Subgerencia de Servicios Socilaes.</option>
+                                <option value="Subgerencia de Servicios Sociales.">Subgerencia de Servicios Socilaes.</option>
                               </select>
+                              <span class="input-group-addon"><i class="fa-solid fa-chart-area"></i></span>
                           </div>
                         </div>
                         
 
-                        <div class="form-group mt-2" style="margin-top:40px;">
+                        <div class="form-group" style="margin-top:50px;">
                           <label  class="col-sm-2 control-label">Tipo de Insidente</label>
-                          <div class="col-sm-10">
+                          <div class="col-sm-10" style="margin-left:10px; max-width:80%; width: 100%;">
                               <div class='input-group'>
                                 <select class="form-control" name="departamento_ticket">
                                 <option value="Escoja una opcion">Escoja una opcion</option>
@@ -225,10 +227,6 @@
                                   <option value="Instalacicion, mantenimiento y actualizacion de software">Instalacicion, mantenimiento y actualizacion de software</option>
                                   <option value="Clave de usuario">Clave de usuario</option>
                                   <option value="Otros">Otros</option>
-
-
-
-
                                 </select>
                                 <span class="input-group-addon"><i class="fa fa-wrench"></i></span>
                               </div> 
@@ -237,7 +235,7 @@
 
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Asunto</label>
-                          <div class="col-sm-10">
+                          <div class="col-sm-10" style="margin-left:10px; max-width:80%; width: 100%;">
                               <div class='input-group'>
                                 <input type="text" class="form-control" placeholder="Asunto" name="asunto_ticket" required="">
                                 <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
@@ -247,7 +245,7 @@
 
                         <div class="form-group">
                           <label  class="col-sm-2 control-label">Descripcion del Asunto </label>
-                          <div class="col-sm-10">
+                          <div class="col-sm-10" style="margin-left:10px; max-width:80%; width: 100%;">
                             <textarea class="form-control" rows="3" placeholder="Escriba el problema que presenta su producto" name="mensaje_ticket" required=""></textarea>
                           </div>
                         </div>
@@ -258,7 +256,7 @@
                           <!-- Cuadro de información -->  
                           <div class="form-group">
                               <label class="control-label font-italic col-sm-2">Adjuntar archivos (Opcional)</label>
-                              <div class="alert alert-info col-md-9">
+                              <div class="alert alert-info col-sm-10" style="margin-left:25px; max-width:75%; width: 100%;">
                                   <strong>ℹ Información:</strong> Puede subir hasta 3 archivos (4MB en total).<br>
                                   Formatos permitidos: .pdf, .jpeg, .jpg, .png
                               </div>
@@ -266,9 +264,11 @@
 
                           <!-- Botón para seleccionar archivos con evento onchange para validación -->
                           <div class="form-group">
-                              <label><span class="col-md-2"></span>Seleccionar Archivos</label>
-                              <div class="col-sm-10">
+                              <div class="row" style="clear:both;">
+                              <label class="control-label col-sm-2">Seleccionar Archivos</label>
+                              <div class="col-sm-10" style="margin-left:23px; max-width:50%; width: 100%;float:left;">
                                 <input type="file" class="form-control-file" name="archivos[]" accept=".pdf, .jpeg, .jpg, .png" multiple onchange="validarArchivos(this)" />
+                              </div>
                               </div>
                           </div>
 

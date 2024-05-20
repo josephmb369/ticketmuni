@@ -15,6 +15,7 @@
                 $_SESSION['clave']=$clave;
                 $_SESSION['tipo']="admin";
                 $_SESSION['cargo']=$reg['cargo'];
+                $_SESSION['type'] = 'admin';
 
             }else{
                echo '
@@ -40,6 +41,7 @@
                 $_SESSION['tipo']="user";
                 $_SESSION['cargo']=$reg['cargo'];
                 $_SESSION['area']=$reg['area'];
+                $_SESSION['type'] = 'user';
             }else{
                 echo '
                     <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 
@@ -64,6 +66,7 @@
                 $_SESSION['tipo']="tecnico";
                 $_SESSION['cargo']=$reg['cargo'];
                 $_SESSION['area']=$reg['area'];
+                $_SESSION['type'] = 'tecnico';
             }else{
                 echo '
                     <div class="alert alert-danger alert-dismissible fade in col-sm-3 animated bounceInDown" role="alert" style="position:fixed; top:70px; right:10px; z-index:10;"> 

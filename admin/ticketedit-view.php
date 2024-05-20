@@ -10,7 +10,7 @@
 <body>
 <?php
     $conexion = mysqli_connect(SERVER, USER, PASS, BD);
-
+    
     // Recomendación 5: Configuración de la codificación interna
     mb_internal_encoding("UTF-8");
 
@@ -101,25 +101,21 @@
     
     $id = MysqlQuery::RequestGet('id');
     echo $id;
-   
-
-    // $id_cliente = MysqlQuery::RequestGet('id_cliente');
-    // $sql_cliente = Mysql::consulta("SELECT * FROM ticket INNER JOIN cliente ON ticket.id_cliente = cliente.id_cliente WHERE ticket.id_cliente = '$id_cliente'");
-    // $selticket=mysqli_query($conexion,$sql_cliente);
-    // if(mysqli_num_rows($selticket)>0):
-
 
       if ($_SESSION['tipo'] == 'admin') {
         // un cliente hizo el registro del ticket
-      $stmt = $conexion->prepare("SELECT ticket.*, cliente.*, tecnico.* FROM ticket INNER JOIN cliente ON ticket.id_cliente = cliente.id_cliente INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE ticket.id = ? AND ticket.id_cliente IS NOT NULL");
-      $stmt->bind_param("s", $id);
-      $stmt->execute();
-      $result = $stmt->get_result();
-  
-      if ($result->num_rows > 0) {
+        $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+        $regall = mysqli_fetch_array($sql, MYSQLI_ASSOC);
         
-        $reg = $result->fetch_assoc();
-    
+        if ($regall['id_cliente']== !null) {
+            $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN cliente ON ticket.id_cliente = cliente.id_cliente INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+            $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        } elseif ($regall['id_admin'] == !null) {
+            $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN administrador ON ticket.id_admin = administrador.id_admin INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+            $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        }
+        
+      if ( true ) {
               if ($_SESSION['tipo'] == 'tecnico') {
                 $readonly = 'disabled';
             } else {
@@ -204,8 +200,16 @@
       <?php
       //un admin hizo el registro
       } elseif($sql = Mysql::consulta("SELECT ticket.*, administrador.*, tecnico.* FROM ticket INNER JOIN administrador ON ticket.id_admin = administrador.id_admin INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE ticket.id = '$id' && ticket.id_admin IS NOT NULL")) {
-        $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
-    
+        $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+        $regall = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        
+        if ($regall['id_cliente']== !null) {
+            $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN cliente ON ticket.id_cliente = cliente.id_cliente INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+            $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        } elseif ($regall['id_admin'] == !null) {
+            $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN administrador ON ticket.id_admin = administrador.id_admin INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+            $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        }
             if ($_SESSION['tipo'] == 'tecnico') {  
               $readonly = 'disabled';
           } else {
@@ -326,14 +330,19 @@
       
     } elseif ($_SESSION['tipo'] == 'tecnico') {
       // un cliente hizo el registro del ticket
-    $stmt = $conexion->prepare("SELECT ticket.*, cliente.*, tecnico.* FROM ticket INNER JOIN cliente ON ticket.id_cliente = cliente.id_cliente INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE ticket.id = ? AND ticket.id_cliente IS NOT NULL");
-    $stmt->bind_param("s", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+      $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+        $regall = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        
+        if ($regall['id_cliente']== !null) {
+            $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN cliente ON ticket.id_cliente = cliente.id_cliente INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+            $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        } elseif ($regall['id_admin'] == !null) {
+            $sql = Mysql::consulta("SELECT * FROM ticket INNER JOIN administrador ON ticket.id_admin = administrador.id_admin INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE id = '$id'");
+            $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
+        }
 
-    if ($result->num_rows > 0) {
-      
-      $reg = $result->fetch_assoc();
+    if (true ) {
+     
   
             if ($_SESSION['tipo'] == 'tecnico') {
               $readonly = 'disabled';
@@ -419,8 +428,8 @@
     //un admin hizo el registro
     } elseif($sql = Mysql::consulta("SELECT ticket.*, administrador.*, tecnico.* FROM ticket INNER JOIN administrador ON ticket.id_admin = administrador.id_admin INNER JOIN tecnico ON ticket.id_tecnico = tecnico.id_tecnico WHERE ticket.id = '$id' && ticket.id_admin IS NOT NULL")) {
       $reg = mysqli_fetch_array($sql, MYSQLI_ASSOC);
-  
-          if ($_SESSION['tipo'] == 'tecnico') {  
+        
+        if ($_SESSION['tipo'] == 'tecnico') {  
             $readonly = 'disabled';
         } else {
             $readonly = '';

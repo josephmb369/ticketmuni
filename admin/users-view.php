@@ -55,9 +55,9 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12">
-                                <div class="container-fluid mt-5 mb-5">
+                                <div class="container-fluid mt-5 mb-5" style="clear:Both;">
                     <!-- Campos de entrada para la búsqueda y filtro por fecha -->
-                                    <input type="text" class="form-control" name="clients" id="clients" placeholder="Buscar por palabra clave...">
+                                    <input type="text" class="form-control" style="max-width:90%;float:left;" name="clients" id="clients" placeholder="Buscar por palabra clave...">
                                     <button id="filter" class="btn btn-primary" style="max-width:10%;float:left;" >Filtrar</button>
                                 </div>
                             </div>
